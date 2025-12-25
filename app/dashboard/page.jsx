@@ -8,14 +8,12 @@ export default function DashboardGrid() {
 
 	const menuItems = [
 		{ name: "Hero", icon: Calendar, href: "/dashboard/hero", id: "hero", color: "bg-blue-900" },
-		{ name: "Students", icon: Calendar, href: "/dashboard/students", id: "students", color: "bg-blue-900" },
-		{ name: "Teachers", icon: Calendar, href: "/dashboard/teachers", id: "teachers", color: "bg-blue-900" },
-		{ name: "Parents", icon: Calendar, href: "/dashboard/parents", id: "parents", color: "bg-blue-900" },
+
 		{ name: "Contact Messages", icon: Book, href: "/dashboard/contactmessages", id: "contactmessages", color: "bg-red-900" },
-		{ name: "Appointments", icon: Book, href: "/dashboard/appointments", id: "appointments", color: "bg-[#0094da]" },
+
 		{ name: "Events", icon: Calendar, href: "/dashboard/events", id: "events", color: "bg-purple-500" },
 		{ name: "Blogs", icon: Newspaper, href: "/dashboard/blogs", id: "blogs", color: "bg-orange-700" },
-		{ name: "Testimonials", icon: MessageSquare, href: "/dashboard/testimonials", id: "testimonials", color: "bg-yellow-800" },
+
 		{ name: "Gallery", icon: Image, href: "/dashboard/gallery", id: "gallery", color: "bg-orange-500" },
 		{ name: "Users", icon: User, href: "/dashboard/users", id: "users", color: "bg-[#0094da]" },
 		{ name: "Notices", icon: MessageSquare, href: "/dashboard/notices", id: "notices", color: "bg-yellow-800" },

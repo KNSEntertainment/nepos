@@ -5,20 +5,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActiveMenu } from "@/context/ActiveMenuContext";
 import { Toaster } from "@/components/ui/toaster";
-import { BookImage, MessageCircle, Mail, Settings, GalleryThumbnails, LayoutDashboard, Home, ArrowBigLeft, Book, Newspaper, Timer, User, LogOut, ChevronDown, CalendarClock } from "lucide-react";
+import { BookImage, MessageCircle, Mail, Settings, GalleryThumbnails, LayoutDashboard, Home, ArrowBigLeft, Book, Newspaper, User, LogOut, ChevronDown } from "lucide-react";
 
 const menuItems = [
 	{ id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
 	{ id: "hero", label: "Hero", icon: LayoutDashboard },
-	{ id: "students", label: "Students", icon: LayoutDashboard },
-	{ id: "teachers", label: "Teachers", icon: LayoutDashboard },
-	{ id: "parents", label: "Parents", icon: LayoutDashboard },
-	{ id: "routines", label: "Class Routines", icon: CalendarClock },
+
 	{ id: "contactmessages", label: "Contact Messages", icon: Book },
-	{ id: "appointments", label: "Appointments", icon: Timer },
+
 	{ id: "events", label: "Events", icon: BookImage },
 	{ id: "blogs", label: "Blogs", icon: Newspaper },
-	{ id: "testimonials", label: "Testimonials", icon: MessageCircle },
+
 	{ id: "gallery", label: "Gallery", icon: GalleryThumbnails },
 	{ id: "users", label: "Users", icon: User },
 	{ id: "notices", label: "Notices", icon: MessageCircle },

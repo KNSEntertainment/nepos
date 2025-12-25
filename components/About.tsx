@@ -2,17 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import HomeVideo from "./HomeVideo";
 
 export default function About() {
 	return (
 		<section id="about" className="my-12 md:my-20 flex items-center justify-center">
-			{/* Background image with overlay */}
-			{/* <div className="absolute inset-0 ">
-				<div className="absolute inset-0 bg-[url('/mc-group.jpeg')] bg-cover bg-center bg-no-repeat"> </div>
-
-				<div className="absolute inset-0 bg-black bg-opacity-50"></div>
-			</div> */}
-
 			{/* Content container */}
 			<div className="container mx-auto flex flex-col md:flex-row gap-8 relative z-10">
 				<motion.div className="mx-auto bg-white overflow-hidden" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
@@ -27,11 +21,11 @@ export default function About() {
 							</h2>
 
 							<div className="space-y-4 text-gray-700">
-								<p className="text-lg">At RSP Norway RSP Norway, we believe that every child is a little artist, ready to explore, create, and grow in a world full of wonder. Our nurturing environment encourages curiosity, creativity, and a love for learning through playful and engaging activities.</p>
+								<p className="text-lg">राज्यका कुनै पनि तहका निर्वाचनमा पार्टीका तर्फबाट उम्मेदवारी टिकट पार्टीका साधारण सदस्यहरुको मतदानबाट विजयी हुनेलाई मात्र दिइने छ । यस्ता मतदानमा विदेशमा रहेका नेपालीहरुले पनि मतदान गरी उम्मेदवार छान्न पाउने छन् । पार्टीका तर्फबाट हुने प्रधानमन्त्री, मुख्यमन्त्री पनि पार्टीकै साधारण सदस्यको मतबाट छानिने छ । यस्तै समानुपातिक निर्वाचन प्रणालीमा पनि साधारण सदस्यको मतदानबाट नामावली र क्रम संख्या तयार पारिनेछ । तर, कुनै पनि बहानामा कसैलाई ‘टीका’ लगाएर उम्मेदवारको टिकट भने दिइने छैन ।</p>
 							</div>
 
 							<div className="mt-8">
-								<Link href="/about-us">
+								<Link href="#">
 									<Button className="bg-[#0094da] hover:bg-[#0094da] text-white px-6 py-3 rounded transition-colors duration-300 inline-flex items-center group">
 										Read More
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,6 +35,7 @@ export default function About() {
 								</Link>
 							</div>
 						</div>
+						<HomeVideo />
 					</div>
 				</motion.div>
 			</div>

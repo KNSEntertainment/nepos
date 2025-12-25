@@ -6,6 +6,9 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				brand: {
+					DEFAULT: "#0094da",
+				},
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				card: {

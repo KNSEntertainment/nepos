@@ -52,7 +52,8 @@
 		"components/testimonials-masonry.jsx",
 		"components/testimonials-alt.jsx",
 		"components/Blog.jsx",
-		"components/TestimonialCard.jsx"
+		"components/TestimonialCard.jsx",
+		"i18n.js"
 	],
 	"exclude": ["node_modules"]
 }

@@ -1,9 +1,6 @@
-"use client";
-
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Blog from "@/components/Blog";
-import UpcomingEvents from "@/components/UpcomingEvents";
 // import Post from "@/components/Post";
 
 export default function LandingPage() {
@@ -13,7 +10,6 @@ export default function LandingPage() {
 				<Hero />
 				{/* <Post /> */}
 				<About />
-				<UpcomingEvents />
 				<Blog />
 			</main>
 		</div>
