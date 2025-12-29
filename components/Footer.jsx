@@ -74,10 +74,10 @@ export default function Footer() {
 					<nav className="mb-2 md:mb-4">
 						<ul className="flex flex-wrap gap-x-8 gap-y-3 justify-center">
 							<li className="text-gray-400 hover:text-black transition-colors text-sm">
-								<Link href="#">Terms And Conditions</Link>
+								<Link href="terms-and-conditions">Terms And Conditions</Link>
 							</li>
 							<li className="text-gray-400 hover:text-black transition-colors text-sm">
-								<Link href="#">Privacy Policy</Link>
+								<Link href="privacy-policy">Privacy Policy</Link>
 							</li>
 						</ul>
 					</nav>

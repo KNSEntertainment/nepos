@@ -194,8 +194,8 @@ export default function Header({ isMenuOpen, toggleMenu }: HeaderProps) {
 								<Link href="/user" className={`hidden sm:block px-4 py-2 rounded-md bg-[#007bbd] text-white font-medium hover:bg-[#0760b9] transition-colors duration-200`} onClick={() => setActiveDropdown(null)}>
 									Login
 								</Link>
-								<Link href="#" className={`px-4 py-2 rounded-md text-[#007bbd] bg-white font-medium hover:bg-white/80 transition-colors duration-200`} onClick={() => setActiveDropdown(null)}>
-									Join us
+								<Link href="/membership" className={`px-4 py-2 rounded-md text-[#007bbd] bg-white font-medium hover:bg-white/80 transition-colors duration-200`} onClick={() => setActiveDropdown(null)}>
+									Become a Member
 								</Link>
 							</div>
 						)}
