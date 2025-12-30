@@ -78,7 +78,7 @@ export default function Page() {
 			<div className="flex justify-between items-center mb-4">
 				<h1 className="text-2xl font-bold">Manage Gallery</h1>
 				<button
-					className="bg-red-700 text-white px-4 py-2 rounded font-semibold hover:bg-red-800"
+					className="bg-brand text-white px-4 py-2 rounded font-semibold hover:bg-red-800"
 					onClick={() => {
 						setGalleryToEdit(null);
 						setOpenModal(true);
@@ -102,10 +102,10 @@ export default function Page() {
 							</div>
 							<div className="font-semibold">{item.category || item.classLabel}</div>
 							<div className="flex gap-2 mt-2">
-								<button className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700" onClick={() => handleEdit(item)}>
+								<button className="bg-brand text-white px-3 py-1 rounded hover:bg-blue-700" onClick={() => handleEdit(item)}>
 									Edit
 								</button>
-								<button className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700" onClick={() => handleDelete(item._id)}>
+								<button className="bg-red-600 text-white px-3 py-1 rounded hover:bg-brand" onClick={() => handleDelete(item._id)}>
 									Delete
 								</button>
 							</div>

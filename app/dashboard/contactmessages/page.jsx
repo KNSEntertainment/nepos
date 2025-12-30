@@ -49,9 +49,7 @@ export default function EventsPage() {
 						{messages?.length > 0 ? (
 							messages.map((message) => (
 								<TableRow key={message._id}>
-									<TableCell className="font-semibold">
-										{message.firstName} {message.lastName}
-									</TableCell>
+									<TableCell className="font-semibold">{message.name}</TableCell>
 									<TableCell>{message.email}</TableCell>
 
 									<TableCell>{message.phone}</TableCell>

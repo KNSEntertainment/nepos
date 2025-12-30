@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent } from "@/components/ui/tabs"; // Import Tabs components
 import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const InputField = memo(({ id, icon: Icon, name, value, onChange, ...props }) => (
 	<div className="relative">
@@ -20,36 +21,14 @@ InputField.displayName = "Input_Fields_User_Auth_Form";
 
 function AuthFormContent() {
 	const router = useRouter();
-	// Session state
-	const [checkingSession, setCheckingSession] = useState(true);
-	useEffect(() => {
-		let ignore = false;
-		const checkSession = async () => {
-			try {
-				const res = await fetch("/api/auth/me");
-				if (!res.ok) throw new Error("Not logged in");
-				const data = await res.json();
-				if (data?.user?.email && !ignore) {
-					// Redirect based on role
-					const role = data.user.role;
-					const target = role === "parent" ? "/parents/dashboard" : role === "teacher" ? "/teachers/dashboard" : "/dashboard";
-					if (typeof window !== "undefined") {
-						window.location.href = target;
-					} else {
-						router.replace(target);
-					}
-				}
-			} catch {
-				// Not logged in, show form
-			} finally {
-				if (!ignore) setCheckingSession(false);
-			}
-		};
-		checkSession();
-		return () => {
-			ignore = true;
-		};
-	}, [router]);
+
+	// useEffect(() => {
+	// 	if (status === "loading") return;
+	// 	if (session?.user) {
+	// 		router.replace("/dashboard");
+	// 	}
+	// }, [session, status, router]);
+
 	const searchParams = useSearchParams();
 	const initialEmail = searchParams.get("email") || "";
 	const initialToken = searchParams.get("token") || "";
@@ -88,79 +67,21 @@ function AuthFormContent() {
 		e.preventDefault();
 		setError("");
 		setSuccess("");
+		setSubmitting(true);
 
-		try {
-			setSubmitting(true);
-			const response = await fetch("/api/user/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					email: formData.email,
-					password: formData.password,
-				}),
-			});
+		const result = await signIn("credentials", {
+			redirect: false,
+			email: formData.email,
+			password: formData.password,
+		});
 
-			const result = await response.json();
-			if (result?.success) {
-				const role = result?.user?.role;
-				const target = role === "parent" ? "/parents/dashboard" : role === "teacher" ? "/teachers/dashboard" : "/dashboard";
-				if (typeof window !== "undefined") {
-					window.location.href = target;
-				} else {
-					router.push(target);
-				}
-			} else {
-				const message = result?.error || result?.message || `Login failed (${response.status})`;
-				setError(message || "Login failed. Please try again.");
-			}
-		} catch (error) {
-			console.error("Login error:", error);
-			setError(error.message || "An unexpected error occurred. Please try again.");
-		} finally {
-			setSubmitting(false);
-		}
-	};
+		setSubmitting(false);
 
-	const handleSetPassword = async (e) => {
-		e.preventDefault();
-		setError("");
-		setSuccess("");
-
-		if (!formData.password || formData.password.length < 8) {
-			setError("Password must be at least 8 characters.");
-			return;
-		}
-		if (formData.password !== confirmPassword) {
-			setError("Passwords do not match.");
-			return;
-		}
-
-		try {
-			setSubmitting(true);
-			const response = await fetch("/api/user/set-password", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ email: formData.email, token: inviteToken, password: formData.password }),
-			});
-			const result = await response.json();
-			if (result?.success) {
-				setSuccess("Password set. You can now log in.");
-				setInviteToken("");
-				setConfirmPassword("");
-				setFormData((prev) => ({ ...prev, password: "" }));
-				setTimeout(() => {
-					router.push(`/user?email=${encodeURIComponent(formData.email)}`);
-				}, 800);
-			} else {
-				const message = result?.error || result?.message || `Failed to set password (${response.status})`;
-				setError(message);
-			}
-		} catch (err) {
-			setError(err?.message || "Unexpected error. Please try again.");
-		} finally {
-			setSubmitting(false);
+		if (result?.ok) {
+			// Use window.location to force navigation and session update
+			window.location.href = "/dashboard";
+		} else {
+			setError(result?.error || "Login failed. Please try again.");
 		}
 	};
 
@@ -180,13 +101,9 @@ function AuthFormContent() {
 		setShowPassword((prev) => !prev);
 	}, []);
 
-	if (checkingSession) {
-		return (
-			<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-				<span className="text-gray-500">Checking session...</span>
-			</div>
-		);
-	}
+	if (status === "loading") return null;
+	// Do not hide login form if logged in
+
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
 			<Card className="w-full max-w-md mx-auto">

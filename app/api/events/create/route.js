@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
-import { jwtVerify } from "jose";
 import connectDB from "@/lib/mongodb";
 import Event from "@/models/Event.Model";
 import { uploadToCloudinary } from "@/utils/saveFileToCloudinaryUtils";
-
-const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
 export const config = {
 	api: {
@@ -15,18 +12,6 @@ export const config = {
 export async function POST(request) {
 	try {
 		await connectDB();
-
-		const token = request.cookies.get("authToken")?.value;
-		if (!token) {
-			return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-		}
-		const secretKey = new TextEncoder().encode(JWT_SECRET);
-		const { payload } = await jwtVerify(token, secretKey);
-		const role = payload?.role;
-		const creatorEmail = payload?.email || "";
-		if (!role || !["teacher", "admin"].includes(role)) {
-			return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
-		}
 
 		const formData = await request.formData();
 		console.log("Received form data", formData);
@@ -49,9 +34,6 @@ export async function POST(request) {
 		// Validate input
 		if (!eventname || !eventposter) {
 			return NextResponse.json({ success: false, error: "Required fields are missing" }, { status: 400 });
-		}
-		if (role === "teacher" && !classLabel && !classId) {
-			return NextResponse.json({ success: false, error: "Class is required for teacher-created events" }, { status: 400 });
 		}
 
 		// Format the date

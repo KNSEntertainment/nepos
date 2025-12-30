@@ -105,7 +105,7 @@ export default function EventsPage() {
 			{openEventModal && (
 				<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-2">
 					<div className="bg-white p-2 sm:p-6 rounded-lg shadow-lg w-full max-w-md sm:max-w-2xl mx-auto">
-						<h2 className="text-base sm:text-lg font-bold text-slate-200 bg-red-700 p-2 sm:p-4 mb-4 sm:mb-6 text-center">{eventToEdit ? "Edit Event" : "Create Event"}</h2>
+						<h2 className="text-base sm:text-lg font-bold text-slate-200 bg-brand p-2 sm:p-4 mb-4 sm:mb-6 text-center">{eventToEdit ? "Edit Event" : "Create Event"}</h2>
 						<EventForm handleCloseEventModal={handleCloseEventModal} eventToEdit={eventToEdit} />
 					</div>
 				</div>

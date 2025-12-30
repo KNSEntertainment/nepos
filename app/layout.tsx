@@ -4,7 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import Header from "@/components/Header";
-// Providers moved to ClientLayout
+import ClientLayout from "./ClientLayout";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -23,8 +23,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
-				{children}
+				<ClientLayout>
+					<Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+					{children}
+				</ClientLayout>
 				<Footer />
 			</body>
 		</html>

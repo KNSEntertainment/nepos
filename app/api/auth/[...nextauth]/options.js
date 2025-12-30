@@ -1,5 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
-//import bcrypt from "bcrypt";
+import bcrypt from "bcrypt";
 import User from "@/models/User.Model";
 import ConnectDB from "@/lib/mongodb";
 import NextAuth from "next-auth";
@@ -31,8 +31,8 @@ export const authOptions = {
 					// 	throw new Error("PLease verify your email first");
 					// }
 
-					const isValid = credentials.password === user.password;
-					// const isValid = await bcrypt.compare(credentials.password, user.password);
+					// const isValid = credentials.password === user.password;
+					const isValid = await bcrypt.compare(credentials.password, user.password);
 					if (!isValid) {
 						console.log("Invalid password");
 						throw new Error("Invalid credentials");
@@ -59,6 +59,7 @@ export const authOptions = {
 				token.isVerified = user.isVerified;
 				token.isAcceptingMessages = user.isAcceptingMessages;
 				token.username = user.username;
+				token.fullName = user.fullName;
 			}
 			return token;
 		},
@@ -70,6 +71,7 @@ export const authOptions = {
 					isVerified: token.isVerified,
 					isAcceptingMessages: token.isAcceptingMessages,
 					username: token.username,
+					fullName: token.fullName,
 				};
 			}
 

@@ -35,23 +35,6 @@ export async function PUT(request, { params }) {
 	try {
 		await connectDB();
 
-		const token = request.cookies.get("authToken")?.value;
-		if (!token) {
-			return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-		}
-		let payload;
-		try {
-			const secretKey = new TextEncoder().encode(JWT_SECRET);
-			({ payload } = await jwtVerify(token, secretKey));
-		} catch {
-			return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-		}
-		const role = payload?.role;
-		const requesterEmail = payload?.email || "";
-		if (!role || !["teacher", "admin"].includes(role)) {
-			return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
-		}
-
 		const formData = await request.formData();
 		const eventId = id;
 
@@ -62,21 +45,9 @@ export async function PUT(request, { params }) {
 			}
 		}
 
-		const classId = formData.get("classId");
-		const classLabel = formData.get("classLabel");
-		if (classId !== null) {
-			eventData.classId = classId || null;
-		}
-		if (classLabel !== null) {
-			eventData.classLabel = classLabel || "";
-		}
-
 		const event = await Event.findById(eventId);
 		if (!event) {
 			return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 });
-		}
-		if (role === "teacher" && event.createdBy && event.createdBy !== requesterEmail) {
-			return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
 		}
 
 		// Handle video update and deletion
@@ -86,7 +57,7 @@ export async function PUT(request, { params }) {
 				console.log("Old video URL:", event.eventvideoUrl);
 				await deleteFromCloudinary(event.eventvideoUrl);
 			}
-			eventData.eventvideoUrl = await uploadToCloudinary(eventvideo, "magic_chalk_event_images");
+			eventData.eventvideoUrl = await uploadToCloudinary(eventvideo, "rspnorway_event_images");
 		}
 
 		// Handle other uploads similarly...
@@ -99,12 +70,6 @@ export async function PUT(request, { params }) {
 		return NextResponse.json({ success: false, error: error.message }, { status: 500 });
 	}
 }
-
-// Helper to delete Cloudinary files
-// async function deleteFromCloudinary(url) {
-// 	const publicId = url.split("/").pop().split(".")[0];
-// 	await cloudinary.uploader.destroy(`magic_chalk_event_images/${publicId}`);
-// }
 
 // DELETE API to delete event
 export async function DELETE(request, { params }) {
@@ -125,17 +90,13 @@ export async function DELETE(request, { params }) {
 			return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
 		}
 		const role = payload?.role;
-		const requesterEmail = payload?.email || "";
-		if (!role || !["teacher", "admin"].includes(role)) {
+		if (!role || !["admin"].includes(role)) {
 			return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
 		}
 
 		const event = await Event.findById(id);
 		if (!event) {
 			return NextResponse.json({ success: false, error: "Event not found" }, { status: 404 });
-		}
-		if (role === "teacher" && event.createdBy && event.createdBy !== requesterEmail) {
-			return NextResponse.json({ success: false, error: "Forbidden" }, { status: 403 });
 		}
 
 		await Event.findByIdAndDelete(id);

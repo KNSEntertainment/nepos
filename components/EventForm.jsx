@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useMemo } from "react";
 
-export default function EventForm({ handleCloseEventModal, eventToEdit = null, classOptions = [], defaultClassId = "", requireClass = false }) {
+export default function EventForm({ handleCloseEventModal, eventToEdit = null, classOptions = [], defaultClassId = "" }) {
 	const defaultClassLabel = useMemo(() => {
 		const match = classOptions.find((cls) => String(cls.id || cls._id || cls.value || "") === String(defaultClassId)) || classOptions[0];
 		return match?.name || match?.label || "";
@@ -150,35 +150,6 @@ export default function EventForm({ handleCloseEventModal, eventToEdit = null, c
 					<textarea id="eventdescription" value={formData.eventdescription} onChange={(e) => setFormData({ ...formData, eventdescription: e.target.value })} className="w-full p-2 border rounded" rows={1} required />
 				</div>
 
-				{classOptions.length > 0 && (
-					<div className="md:col-span-2">
-						<label htmlFor="classId" className="block mb-2 font-bold">
-							Classroom (parents in this class will see it)
-						</label>
-						<select
-							id="classId"
-							value={formData.classId}
-							onChange={(e) => {
-								const value = e.target.value;
-								const match = classOptions.find((cls) => String(cls.id || cls._id || cls.value || "") === value);
-								setFormData({ ...formData, classId: value, classLabel: match?.name || match?.label || "" });
-							}}
-							required={requireClass}
-							className="w-full p-2 border rounded"
-						>
-							{!requireClass && <option value="">All classes / public</option>}
-							{classOptions.map((cls) => {
-								const value = String(cls.id || cls._id || cls.value || "");
-								return (
-									<option key={value || cls.name || cls.label} value={value}>
-										{cls.name || cls.label || "Class"}
-									</option>
-								);
-							})}
-						</select>
-						{requireClass && <p className="text-xs text-gray-600 mt-1">Required for teacher-created class events.</p>}
-					</div>
-				)}
 				<div>
 					<label htmlFor="eventdate" className="block mb-2 font-bold">
 						Event Date
@@ -217,7 +188,7 @@ export default function EventForm({ handleCloseEventModal, eventToEdit = null, c
 					<input type="file" id="eventvideo" onChange={(e) => setFormData({ ...formData, eventvideo: e.target.files[0] })} className="w-full p-2 border rounded" />
 				</div>
 				<div className="grid gap-2">
-					<button type="submit" disabled={submitting} className={`w-full p-1.5 rounded ${submitting ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-red-700"} text-slate-200 font-bold`}>
+					<button type="submit" disabled={submitting} className={`w-full p-1.5 rounded ${submitting ? "bg-gray-400 cursor-not-allowed" : "bg-red-600 hover:bg-brand"} text-slate-200 font-bold`}>
 						{submitting ? `${eventToEdit ? "Updating" : "Creating"} Event...` : `${eventToEdit ? "Update" : "Create"} Event`}
 					</button>
 					<Button variant="outline" onClick={handleCloseEventModal}>

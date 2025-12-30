@@ -101,7 +101,7 @@ export default function MembershipPage() {
 					</div>
 					<h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to RSP Norway!</h2>
 					<p className="text-gray-700 mb-6">Your membership application has been received successfully. Our team will review your application and contact you within 48 hours.</p>
-					<button onClick={() => setSubmitted(false)} className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+					<button onClick={() => setSubmitted(false)} className="bg-brand text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
 						Submit Another Application
 					</button>
 				</div>

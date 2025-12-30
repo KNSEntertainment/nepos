@@ -6,7 +6,6 @@ export async function GET() {
 	try {
 		await connectDB();
 		const gallery = await Gallery.find().sort({ createdAt: -1 });
-
 		return NextResponse.json({ success: true, gallery }, { status: 200 });
 	} catch (error) {
 		console.error("Error fetching gallery items:", error);

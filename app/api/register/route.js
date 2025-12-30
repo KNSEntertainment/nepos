@@ -16,8 +16,8 @@ export async function POST(req) {
 			return NextResponse.json({ error: "All fields are required." }, { status: 400 });
 		}
 
-		const allowedRoles = ["parent", "teacher", "admin"];
-		const userRole = allowedRoles.includes(role) ? role : "parent";
+		const allowedRoles = ["admin"];
+		const userRole = allowedRoles.includes(role) ? role : "admin";
 
 		// Check if the email already exists
 		const existingUser = await User.findOne({ email });

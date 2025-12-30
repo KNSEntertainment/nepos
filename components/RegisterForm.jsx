@@ -24,7 +24,7 @@ const RegisterForm = ({ handleCloseUserModal }) => {
 		email: "",
 		userName: "",
 		password: "",
-		role: "parent",
+		role: "user",
 	});
 
 	const handleRegister = async (e) => {
@@ -50,7 +50,7 @@ const RegisterForm = ({ handleCloseUserModal }) => {
 					email: "",
 					userName: "",
 					password: "",
-					role: "parent",
+					role: "user",
 				});
 				alert("User created successfully");
 				if (handleCloseUserModal) handleCloseUserModal();
@@ -69,7 +69,7 @@ const RegisterForm = ({ handleCloseUserModal }) => {
 			email: "",
 			userName: "",
 			password: "",
-			role: "parent",
+			role: "user",
 		});
 		setError("");
 		if (handleCloseUserModal) handleCloseUserModal();
@@ -86,8 +86,7 @@ const RegisterForm = ({ handleCloseUserModal }) => {
 					<Label htmlFor="register-role">User Role</Label>
 					<select id="register-role" name="role" value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} className="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50 px-3 py-2">
 						<option value="admin">Admin</option>
-						<option value="parent">Parent</option>
-						<option value="teacher">Teacher</option>
+						<option value="user">User</option>
 					</select>
 				</div>
 				<div className="space-y-2">
@@ -116,7 +115,7 @@ const RegisterForm = ({ handleCloseUserModal }) => {
 			</div>
 			{error && <p className="mt-2 text-red-600">{error}</p>}
 			<div className="mt-6 flex justify-between">
-				<Button type="submit" className="bg-red-700 hover:bg-red-800">
+				<Button type="submit" className="bg-brand hover:bg-red-800">
 					Register
 				</Button>
 				<Button type="button" variant="outline" onClick={handleCancel}>

@@ -5,8 +5,6 @@ const eventSchema = new mongoose.Schema({
 	eventdescription: { type: String, required: false },
 	eventvenue: { type: String, required: false },
 	eventdate: { type: String, required: false },
-	classId: { type: mongoose.Schema.Types.ObjectId, ref: "Class", default: null },
-	classLabel: { type: String, default: "" },
 	createdBy: { type: String, default: "" },
 	eventtime: { type: String, required: false },
 	eventposterUrl: { type: String, required: true },

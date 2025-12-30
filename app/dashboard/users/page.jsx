@@ -105,8 +105,7 @@ export default function UsersPage() {
 					<select className="border rounded px-2 py-2" value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)}>
 						<option value="">All Roles</option>
 						<option value="admin">Admin</option>
-						<option value="parent">Parent</option>
-						<option value="teacher">Teacher</option>
+						<option value="user">User</option>
 					</select>
 				</div>
 				<button onClick={handleCreateUser} className="bg-red-800 text-slate-200 font-bold px-4 py-2">
@@ -119,14 +118,13 @@ export default function UsersPage() {
 				<div className="flex gap-4 flex-1 items-center pl-2">
 					<input type="checkbox" checked={allSelectedOnPage} onChange={handleSelectAll} aria-label="Select all users on page" />
 					<span>Select All</span>
-					<button className="bg-red-700 text-white px-3 py-1 rounded disabled:opacity-50" onClick={handleBulkDelete} disabled={selectedUserIds.length === 0}>
+					<button className="bg-brand text-white px-3 py-1 rounded disabled:opacity-50" onClick={handleBulkDelete} disabled={selectedUserIds.length === 0}>
 						Delete Selected
 					</button>
 					<select className="border rounded px-2 py-1" value={bulkRole} onChange={(e) => setBulkRole(e.target.value)} disabled={selectedUserIds.length === 0}>
 						<option value="">Change Role</option>
 						<option value="admin">Admin</option>
-						<option value="parent">Parent</option>
-						<option value="teacher">Teacher</option>
+						<option value="user">User</option>
 					</select>
 					<button className="bg-[#0094da] text-white px-3 py-1 rounded disabled:opacity-50" onClick={handleBulkRoleChange} disabled={selectedUserIds.length === 0 || !bulkRole}>
 						Apply Role
@@ -199,7 +197,7 @@ export default function UsersPage() {
 			{openUserModal && (
 				<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
 					<div className="bg-white p-6 rounded-lg shadow-lg w-96">
-						<h2 className="text-lg font-bold text-slate-200 bg-red-700 p-4 mb-6 text-center">Register User</h2>
+						<h2 className="text-lg font-bold text-slate-200 bg-brand p-4 mb-6 text-center">Register User</h2>
 						<RegisterForm handleCloseUserModal={handleCloseUserModal} fetchUsers={users} />
 					</div>
 				</div>
