@@ -106,7 +106,7 @@ function OpportunitiesPageInner() {
 		if (idFromQuery !== selectedId) {
 			setSelectedId(idFromQuery);
 		}
-	}, [idFromQuery]);
+	}, [idFromQuery, selectedId]);
 
 	const selectedOpportunity = opportunitiesData.find((opp) => opp.id === selectedId) || opportunitiesData[0];
 	const otherOpportunities = opportunitiesData.filter((opp) => opp.id !== selectedId);
