@@ -12,7 +12,7 @@ function BlogSidebar({ blogs }) {
 				<h3 className="text-lg font-semibold text-gray-800 mb-4">Blog Posts</h3>
 				<div className="space-y-4">
 					{blogs.map((relBlog) => (
-						<Link href={`/notices/${relBlog._id}`} key={relBlog._id} className="flex space-x-4 group">
+						<Link href={`/circulars/${relBlog._id}`} key={relBlog._id} className="flex space-x-4 group">
 							<div className="relative w-16 h-16 flex-shrink-0">
 								<Image src={relBlog?.blogMainPicture || "Image"} alt={relBlog.blogTitle || "Blog Title"} width={64} height={64} className="object-cover rounded-md" />
 							</div>

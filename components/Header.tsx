@@ -80,6 +80,7 @@ export default function Header({ isMenuOpen, toggleMenu }: HeaderProps) {
 		},
 		{ title: "Gallery", href: "/gallery" },
 		{ title: "Circulars", href: "/circulars" },
+		{ title: "Downloads", href: "/downloads" },
 		{ title: "Contact", href: "/contact" },
 	];
 	const mobileNavItems = navItems;

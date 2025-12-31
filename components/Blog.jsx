@@ -90,7 +90,7 @@ export default function Blog() {
 														className="bg-transparent p-0 m-0 border-none text-left w-full hover:text-[#0094da] focus:outline-none"
 														onClick={() => {
 															setNavLoading(true);
-															router.push(`/notices/${blog?._id}`);
+															router.push(`/circulars/${blog?._id}`);
 														}}
 														disabled={navLoading}
 													>
@@ -102,9 +102,9 @@ export default function Blog() {
 									</div>
 								))}
 						</div>
-						{pathname !== "/notices" && (
+						{pathname !== "/circulars" && (
 							<div className="flex justify-center">
-								<Link href="/notices" className="inline-flex items-center px-5 py-2.5 font-medium text-sm rounded-lg bg-[#0094da] text-white hover:bg-[#0094da] transition-colors duration-200">
+								<Link href="/circulars" className="inline-flex items-center px-5 py-2.5 font-medium text-sm rounded-lg bg-[#0094da] text-white hover:bg-[#0094da] transition-colors duration-200">
 									View All
 									<svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 										<path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />

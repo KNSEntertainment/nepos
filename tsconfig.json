@@ -54,7 +54,8 @@
 		"components/Blog.jsx",
 		"components/TestimonialCard.jsx",
 		"i18n.js",
-		"models/Membership.Model.js"
+		"models/Membership.Model.js",
+		"app/dashboard/downloads/page.jsx"
 	],
 	"exclude": ["node_modules"]
 }
