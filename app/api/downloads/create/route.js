@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import Download from "@/models/Download.Model";
-import { saveUploadedFile } from "@/lib/saveUploadedFile";
+import { uploadToCloudinary } from "@/utils/saveFileToCloudinaryUtils";
 
 export async function POST(request) {
 	try {
@@ -17,16 +17,15 @@ export async function POST(request) {
 			return NextResponse.json({ success: false, error: "Missing required fields." }, { status: 400 });
 		}
 
-		// Save file
-		const savedFile = await saveUploadedFile(file, "downloads");
-		let savedImage = null;
+		// Upload file to Cloudinary (Downloads folder)
+		const fileUrl = await uploadToCloudinary(file, "Downloads");
+		let imageUrl = "";
 		if (image) {
 			try {
-				savedImage = await saveUploadedFile(image, "downloads");
+				imageUrl = await uploadToCloudinary(image, "Downloads");
 			} catch (e) {
-				// Optional: ignore image upload errors
-				savedImage = null;
-				console.error("Error saving image:", e);
+				imageUrl = "";
+				console.error("Error uploading image to Cloudinary:", e);
 			}
 		}
 
@@ -34,10 +33,10 @@ export async function POST(request) {
 			title,
 			date,
 			category,
-			fileUrl: savedFile.url,
-			imageUrl: savedImage ? savedImage.url : "",
-			fileSize: savedFile.size,
-			imageSize: savedImage ? savedImage.size : undefined,
+			fileUrl,
+			imageUrl,
+			fileSize: file.size,
+			imageSize: image ? image.size : undefined,
 		});
 		return NextResponse.json({ success: true, download }, { status: 201 });
 	} catch (error) {
