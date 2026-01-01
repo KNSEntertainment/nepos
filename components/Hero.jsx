@@ -19,7 +19,7 @@ export default function Hero() {
 			description: "Join the movement for change. RSP Norway connects the Nepali diaspora in Norway with the vision of a progressive, corruption-free Nepal built on pluralistic democracy and good governance.",
 			primaryButton: "Become a Member",
 			primaryLink: "/membership",
-			secondaryButton: "Learn About RSP",
+			secondaryButton: "Explore RSP",
 			secondaryLink: "/about-us",
 			primaryColor: "#0094da",
 			primaryHover: "#0093dd",

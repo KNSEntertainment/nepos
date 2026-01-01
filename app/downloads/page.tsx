@@ -180,7 +180,13 @@ export default function DownloadsPage() {
 										{doc.imageUrl && doc.imageUrl.trim() !== "" ? (
 											<Image src={doc.imageUrl} alt={doc.title} width={350} height={350} className="text-white hidden lg:block object-fill w-48 h-full" />
 										) : (
-											<div className="w-full max-h-48 h-[192px] flex items-center justify-center bg-brand">
+											<div className="hidden lg:flex w-48 h-full items-center justify-center bg-brand">
+												<FileText size={48} className="text-blue-100" />
+											</div>
+										)}
+										{/* Mobile fallback for both image and icon */}
+										{!(doc.imageUrl && doc.imageUrl.trim() !== "") && (
+											<div className="lg:hidden w-full max-h-48 h-[192px] flex items-center justify-center bg-brand">
 												<FileText size={48} className="text-blue-100" />
 											</div>
 										)}

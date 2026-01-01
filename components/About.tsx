@@ -17,7 +17,7 @@ export default function About() {
 						<div className="p-8 md:p-12">
 							<h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
 								Welcome to
-								<span className="text-[#0094da] block mt-1"> RSP Norway RSP Norway</span>
+								<span className="text-[#0094da] mt-1"> RSP Norway</span>
 							</h2>
 
 							<div className="space-y-4 text-gray-700">
@@ -25,9 +25,9 @@ export default function About() {
 							</div>
 
 							<div className="mt-8">
-								<Link href="#">
+								<Link href="message-from-rsp">
 									<Button className="bg-[#0094da] hover:bg-[#0094da] text-white px-6 py-3 rounded transition-colors duration-300 inline-flex items-center group">
-										Read More
+										Read Full Message
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
 										</svg>
