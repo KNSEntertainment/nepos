@@ -100,7 +100,7 @@ export default function DownloadsPage() {
 
 	if (isLoading) {
 		return (
-			<div className="mt-16 md:mt-24 min-h-screen">
+			<div className="mt-16 md:mt-32 min-h-screen">
 				<main className="container mx-auto px-4 py-8">
 					<section className="container mx-auto md:px-4 py-8 mb-16">
 						<h2 className="text-3xl text-center font-bold mb-6">
@@ -162,7 +162,7 @@ export default function DownloadsPage() {
 
 	if (error) {
 		return (
-			<div className="mt-24 min-h-screen flex items-center justify-center">
+			<div className="mt-16 md:mt-32 min-h-screen flex items-center justify-center">
 				<div className="bg-white rounded-2xl shadow-lg p-12 text-center">
 					<div className="inline-flex items-center justify-center w-20 h-20 bg-red-100 rounded-full mb-4">
 						<FileText size={40} className="text-red-400" />
@@ -174,18 +174,18 @@ export default function DownloadsPage() {
 		);
 	}
 	return (
-		<div className="mt-16 md:mt-24 min-h-screen">
-			<main className="container mx-auto px-4 py-8">
-				<section className="container mx-auto md:px-4 py-8 mb-16">
+		<div className="mt-16 md:mt-32 min-h-screen">
+			<main className="container mx-auto px-4 py-4">
+				<section className="py-8 ">
 					<h2 className="text-3xl text-center font-bold mb-6">
 						{t("title")} <span className="mx-auto text-brand"></span>
 					</h2>
 					<div className="w-24 h-1 mx-auto bg-brand mb-6 md:mb-12 rounded-full"></div>
 
 					{/* Main Content */}
-					<div className="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+					<div className="bg-brand/10 p-6 md:p-8 md:rounded-2xl">
 						{/* Search and Filter Bar */}
-						<div className="bg-white rounded-2xl shadow-lg p-4 md:p-6 mb-8">
+						<div className="bg-white rounded-md md:rounded-2xl shadow-md md:shadow-lg p-2 md:p-6 mb-4 md:mb-8">
 							<div className="flex flex-col md:flex-row gap-2 md:gap-4">
 								{/* Search Input + Filter Icon for mobile */}
 								<div className="flex items-center w-full md:flex-1 min-w-0 relative">
@@ -232,7 +232,7 @@ export default function DownloadsPage() {
 
 						{/* Documents Grid */}
 						{filteredDocuments.length > 0 ? (
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
 								{filteredDocuments.map((doc) => (
 									<div key={doc.id} className="flex bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden max-h-[224px] group">
 										{doc.imageUrl && doc.imageUrl.trim() !== "" ? (
@@ -261,7 +261,7 @@ export default function DownloadsPage() {
 											<div className="flex justify-between items-end">
 												{/* Action Buttons */}
 												<div className="flex gap-3 w-fit">
-													<button onClick={() => handleDownload(doc.fileUrl, doc.title, doc.id)} className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium shadow-md">
+													<button onClick={() => handleDownload(doc.fileUrl, doc.title, doc.id)} className="flex-1 flex items-center justify-center gap-2 px-4 md:px-4 py-1 md:py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium shadow-md">
 														<Download size={18} />
 														{t("download")}
 													</button>

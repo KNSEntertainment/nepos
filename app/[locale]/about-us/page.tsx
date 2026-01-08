@@ -7,7 +7,7 @@ export default function AboutUs() {
 	return (
 		<div className="mt-24 md:mt-32 md:mb-12 min-h-screen">
 			<main className="container mx-auto px-4 py-8">
-				<section className="container mx-auto px-4 py-8 mb:6 md:mb-8">
+				<section className=" py-8 mb:6 md:mb-8">
 					<h2 className="text-3xl text-center font-bold mb-6">
 						{t("title").split(" ")[0]} <span className="mx-auto text-brand">{t("title").split(" ")[1]}</span>
 					</h2>

@@ -55,12 +55,12 @@ export default function ContactPage() {
 	}
 
 	return (
-		<section className="container min-h-screen mt-20 md:mt-24 mx-auto px-4 py-12 md:py-16 mb-16">
-			<h2 className="text-3xl text-center font-bold mb-6">
+		<section className="container min-h-screen mt-24 md:mt-32 mx-auto px-4 pt-12">
+			<h2 className="text-2xl md:text-3xl text-center font-bold mb-6">
 				{t("title").split(" ")[0]} <span className="mx-auto text-brand">{t("title").split(" ")[1]}</span>
 			</h2>
 			<div className="w-24 h-1 mx-auto bg-brand md:mb-12 rounded-full"></div>
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto max-w-5xl">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				<div className="bg-white lg:col-span-2 shadow-xl rounded-lg p-8 w-full">
 					<h1 className="text-lg md:text-3xl font-bold text-center mb-2 md:mb-4 text-brand">{t("subtitle")}</h1>
 					<p className="text-center text-gray-600 mb-8">{t("description")}</p>

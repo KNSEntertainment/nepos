@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 export default function About() {
 	const t = useTranslations("about");
 	return (
-		<section id="about" className="md:my-20 flex items-center justify-center">
+		<section id="about" className="container mx-auto w-full px-4 md:my-20 flex items-center justify-center">
 			{/* Content container */}
 			<div className="container mx-auto flex flex-col md:flex-row relative z-10">
 				<motion.div className="mx-auto bg-blue-50 overflow-hidden" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>

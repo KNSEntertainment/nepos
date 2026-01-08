@@ -225,7 +225,7 @@ export default function EventsAndNoticesPage() {
 	// Main Page - Events & Notices Grid
 	return (
 		<div className="min-h-screen mt-32 md:mt-32">
-			<div className="container max-w-7xl mx-auto px-4 py-12">
+			<div className="container mx-auto px-4 py-12">
 				{/* Header */}
 				<div className="text-center mb-12">
 					<h1 className="text-3xl font-bold mb-6">
@@ -257,7 +257,7 @@ export default function EventsAndNoticesPage() {
 								{sortedEvents.map((event) => {
 									const { day, month } = formatEventDate(event.eventdate);
 									return (
-										<Card key={event._id} className="group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden border-none" onClick={() => setSelectedEvent(event)}>
+										<Card key={event._id} className="group cursor-pointer hover:shadow-2xl md:transition-all md:duration-300 md:hover:-translate-y-1 overflow-hidden border-none" onClick={() => setSelectedEvent(event)}>
 											<div className="relative h-48 bg-gradient-to-br from-yellow-100 to -brand overflow-hidden">
 												{event.eventposterUrl ? (
 													<Image src={event.eventposterUrl} alt={event.eventname} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
