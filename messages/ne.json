@@ -267,5 +267,18 @@
 		"female": "महिला",
 		"other": "अन्य",
 		"prefer_not_to_say": "भन्न नचाहने"
+	},
+	"login": {
+		"title": "लग इन",
+		"email": "इमेल",
+		"password": "पासवर्ड",
+		"email_placeholder": "तपाईंको इमेल ठेगाना",
+		"password_placeholder": "तपाईंको पासवर्ड",
+		"login_button": "लगइन",
+		"cancel_button": "रद्द गर्नुहोस्",
+		"error": "लगइन असफल भयो। कृपया इमेल र पासवर्ड जाँच गर्नुहोस्।",
+		"set_password": "पासवर्ड सेट",
+		"password_set_success": "पासवर्ड सफलतापूर्वक सेट गरियो। अब तपाईं लगइन गर्न सक्नुहुन्छ।",
+		"logging_in": "लगइन हुँदैछ..."
 	}
 }

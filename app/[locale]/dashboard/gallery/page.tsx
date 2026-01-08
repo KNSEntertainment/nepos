@@ -45,7 +45,7 @@ export default function Page() {
 
 	useEffect(() => {
 		loadGallery();
-	});
+	}, []);
 
 	const handleEdit = (item: GalleryItem) => {
 		setGalleryToEdit(item);

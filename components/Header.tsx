@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Search, X, ChevronDown, LogOut } from "lucide-react";
+import { Menu, Search, X, ChevronDown, LogOut, Phone, Mail, LayoutDashboard } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import SearchModal from "@/components/SearchModal";
@@ -195,11 +195,13 @@ export default function Header() {
 				<div className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between">
 					<div className="flex items-center gap-6 text-sm font-medium">
 						<a href="tel:+4796800984" className="hover:opacity-75 transition-opacity duration-200 flex items-center gap-2" aria-label="Call us">
-							<span className="hidden sm:inline">📞</span>
+							{/* <span className="sm:inline">📞</span> */}
+							<Phone size={16} />
 							{tr("phone_small_device")}
 						</a>
 						<a href="mailto:info@rspnorway.org" className="hidden md:flex items-center gap-2 hover:opacity-75 transition-opacity duration-200" aria-label="Email us">
-							<span>✉️</span>
+							{/* <span>✉️</span> */}
+							<Mail size={16} />
 							info@rspnorway.org
 						</a>
 					</div>
@@ -304,6 +306,10 @@ export default function Header() {
 												<p className="font-semibold text-neutral-900 truncate">{user.email}</p>
 												<p className="text-xs text-neutral-500 mt-1">Signed in</p>
 											</div>
+											<Link href="/dashboard" className="flex items-center gap-3 px-5 py-3.5 text-brand hover:bg-brand/10 w-full transition-all duration-200 font-medium">
+												<LayoutDashboard size={18} />
+												Dashboard
+											</Link>
 											<button onClick={() => signOut({ callbackUrl: "/" })} className="flex items-center gap-3 px-5 py-3.5 text-red-600 hover:bg-red-50 w-full transition-all duration-200 font-medium">
 												<LogOut size={18} />
 												Sign Out

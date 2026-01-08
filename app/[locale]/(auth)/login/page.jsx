@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent } from "@/components/ui/tabs"; // Import Tabs components
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 const InputField = memo(({ id, icon: Icon, name, value, onChange, ...props }) => (
 	<div className="relative">
@@ -21,13 +22,7 @@ InputField.displayName = "Input_Fields_User_Auth_Form";
 
 function AuthFormContent() {
 	const router = useRouter();
-
-	// useEffect(() => {
-	// 	if (status === "loading") return;
-	// 	if (session?.user) {
-	// 		router.replace("/dashboard");
-	// 	}
-	// }, [session, status, router]);
+	const t = useTranslations("login");
 
 	const searchParams = useSearchParams();
 	const initialEmail = searchParams.get("email") || "";
@@ -81,7 +76,7 @@ function AuthFormContent() {
 			// Use window.location to force navigation and session update
 			window.location.href = "/dashboard";
 		} else {
-			setError(result?.error || "Login failed. Please try again.");
+			setError(result?.error || t("error"));
 		}
 	};
 
@@ -101,14 +96,11 @@ function AuthFormContent() {
 		setShowPassword((prev) => !prev);
 	}, []);
 
-	if (status === "loading") return null;
-	// Do not hide login form if logged in
-
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
 			<Card className="w-full max-w-md mx-auto">
 				<CardHeader className="bg-brand text-slate-200 rounded-t-lg text-center">
-					<CardTitle className="text-2xl font-bold">{hasInvite ? "Set Password" : "Login"}</CardTitle>
+					<CardTitle className="text-2xl font-bold">{hasInvite ? t("set_password") : t("title")}</CardTitle>
 				</CardHeader>
 				<CardContent className="mt-6">
 					{error && <p className="text-red-500 mb-4 text-center">{error}</p>}
@@ -120,14 +112,14 @@ function AuthFormContent() {
 					{hasInvite ? (
 						<form onSubmit={handleSetPassword} className="space-y-4">
 							<div className="space-y-2">
-								<Label htmlFor="set-email">Email</Label>
+								<Label htmlFor="set-email">{t("email")}</Label>
 								<InputField id="set-email" icon={Mail} name="email" type="email" value={formData.email} onChange={handleInputChange} readOnly />
 							</div>
 							<div className="space-y-2">
-								<Label htmlFor="set-password">New Password</Label>
+								<Label htmlFor="set-password">{t("password")}</Label>
 								<div className="relative">
 									<Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-									<Input id="set-password" name="password" type={showPassword ? "text" : "password"} placeholder="Enter new password" value={formData.password} onChange={handleInputChange} className="pl-10 pr-10" />
+									<Input id="set-password" name="password" type={showPassword ? "text" : "password"} placeholder={t("password_placeholder")} value={formData.password} onChange={handleInputChange} className="pl-10 pr-10" />
 									<button type="button" onClick={togglePasswordVisibility} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
 										{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
 									</button>
@@ -139,7 +131,7 @@ function AuthFormContent() {
 							</div>
 							<div className="mt-6 flex justify-end gap-2">
 								<Button type="button" variant="outline" onClick={handleCancel}>
-									Cancel
+									{t("cancel_button")}
 								</Button>
 								<Button type="submit" className="bg-brand hover:bg-orange-400" disabled={submitting}>
 									{submitting ? "Saving..." : "Set password"}
@@ -152,14 +144,14 @@ function AuthFormContent() {
 								<form onSubmit={handleLogin}>
 									<div className="space-y-4">
 										<div className="space-y-2">
-											<Label htmlFor="login-email">Email</Label>
-											<InputField id="login-email" icon={Mail} name="email" type="email" placeholder="Enter your email" value={formData.email} onChange={handleInputChange} />
+											<Label htmlFor="login-email">{t("email")}</Label>
+											<InputField id="login-email" icon={Mail} name="email" type="email" placeholder={t("email_placeholder")} value={formData.email} onChange={handleInputChange} />
 										</div>
 										<div className="space-y-2">
-											<Label htmlFor="login-password">Password</Label>
+											<Label htmlFor="login-password">{t("password")}</Label>
 											<div className="relative">
 												<Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-												<Input id="login-password" name="password" type={showPassword ? "text" : "password"} placeholder="Enter your password" value={formData.password} onChange={handleInputChange} className="pl-10 pr-10" />
+												<Input id="login-password" name="password" type={showPassword ? "text" : "password"} placeholder={t("password_placeholder")} value={formData.password} onChange={handleInputChange} className="pl-10 pr-10" />
 												<button type="button" onClick={togglePasswordVisibility} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
 													{showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
 												</button>
@@ -168,10 +160,10 @@ function AuthFormContent() {
 									</div>
 									<div className="mt-6 flex justify-between">
 										<Button type="button" variant="outline" onClick={handleCancel}>
-											Cancel
+											{t("cancel_button")}
 										</Button>
 										<Button type="submit" className="bg-brand hover:bg-orange-400" disabled={submitting}>
-											{submitting ? "Logging in..." : "Login"}
+											{submitting ? t("logging_in") : t("login_button")}
 										</Button>
 									</div>
 								</form>

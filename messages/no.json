@@ -264,5 +264,18 @@
 		"female": "Kvinne",
 		"other": "Annet",
 		"prefer_not_to_say": "Foretrekker å ikke si"
+	},
+	"login": {
+		"title": "Logg Inn",
+		"email": "E-post",
+		"password": "Passord",
+		"email_placeholder": "Din e-postadresse",
+		"password_placeholder": "Ditt passord",
+		"login_button": "Logg inn",
+		"cancel_button": "Avbryt",
+		"error": "Innlogging mislyktes. Vennligst sjekk e-post og passord.",
+		"set_password": "Sett Passord",
+		"password_set_success": "Passordet ditt har blitt satt! Du kan nå logge inn med ditt nye passord.",
+		"logging_in": "Logger inn..."
 	}
 }

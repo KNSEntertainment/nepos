@@ -41,7 +41,7 @@ export default function EventsPage() {
 							<TableHead>Message Sender</TableHead>
 							<TableHead>Email</TableHead>
 							<TableHead>Phone</TableHead>
-							<TableHead>Message to KNS</TableHead>
+							<TableHead>Message to PNSBN</TableHead>
 							<TableHead>Actions</TableHead>
 						</TableRow>
 					</TableHeader>

@@ -263,5 +263,18 @@
 		"female": "Female",
 		"other": "Other",
 		"prefer_not_to_say": "Prefer not to say"
+	},
+	"login": {
+		"title": "Admin Login",
+		"email": "Email",
+		"email_placeholder": "e.g. myemail@gmail.com",
+		"password": "Password",
+		"password_placeholder": "Enter your password",
+		"login_button": "Login",
+		"cancel_button": "Cancel",
+		"error": "Invalid email or password. Please try again.",
+		"set_password": "Set Password",
+		"password_set_success": "Your password has been set successfully. You can now log in.",
+		"logging_in": "Logging in"
 	}
 }
