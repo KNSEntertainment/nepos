@@ -42,12 +42,12 @@ function NavItem({ title, href, isScrolled, pathname, dropdownItems, activeDropd
 	return (
 		<div className="relative">
 			{hasDropdown ? (
-				<button onClick={handleDropdownClick} className={`flex items-center gap-1 border-b border-transparent hover:border-b hover:border-b-yellow-400 ${isScrolled ? "text-black" : "text-white hover:text-slate-100"} ${isActive ? "border-b-2 border-brand" : ""}`}>
+				<button onClick={handleDropdownClick} className={`flex items-center gap-1 border-b-2 border-transparent hover:border-b hover:border-b-white ${isScrolled ? "text-black" : "text-white hover:text-slate-100"} ${isActive ? "border-b-2 border-white" : ""}`}>
 					{title}
 					<ChevronDown size={16} className={isDropdownOpen ? "transform rotate-180 transition-transform" : "transition-transform"} />
 				</button>
 			) : (
-				<Link href={href} className={`border-b border-transparent hover:border-b hover:border-b-yellow-400 ${isScrolled ? "text-black" : "text-white hover:text-slate-100"} ${isActive ? "border-b-2 border-brand" : ""}`} onClick={() => setActiveDropdown(null)}>
+				<Link href={href} className={`pb-1 border-b border-transparent hover:border-b-2 hover:border-b-white ${isScrolled ? "text-black" : "text-white hover:text-slate-100"} ${isActive ? "border-b-2 border-white" : ""}`} onClick={() => setActiveDropdown(null)}>
 					{title}
 				</Link>
 			)}
@@ -64,7 +64,7 @@ function NavItem({ title, href, isScrolled, pathname, dropdownItems, activeDropd
 	);
 }
 
-export default function MenuHeader() {
+export default function Header() {
 	const router = useRouter();
 	const pathname = usePathname(); // This returns pathname WITHOUT locale prefix
 	const locale = useLocale(); // This is the proper way to get current locale with next-intl
@@ -173,10 +173,9 @@ export default function MenuHeader() {
 			}}
 		>
 			{/* Top header */}
-			<section className={`w-full h-10 p-[5px] border-b border-gray-300 shadow-sm transition-colors duration-500 will-change-[background-color] ${isScrolled ? "bg-brand" : "bg-gradient-to-r from-gray-50 to-gray-100"}`}>
-				<div className="container mx-auto px-4">
+			<section className={`w-full h-10 py-[5px] border-b border-gray-300 shadow-sm transition-colors duration-500 will-change-[background-color] ${isScrolled ? "bg-brand" : "bg-gradient-to-r from-gray-50 to-gray-100"}`}>
+				<div className="container mx-auto px-4 md:px-4">
 					<div className="flex justify-between items-center">
-						{/* ...existing code for top header left and right sections... */}
 						<div className="flex items-center gap-4 md:gap-6">
 							<a href="tel:+4796800984" className="flex items-center gap-2 text-gray-700 hover:text-brand transition-colors group">
 								<svg className={`w-4 h-4 ${isScrolled ? "text-white" : "text-brand"} group-hover:scale-110 transition-transform`} fill="currentColor" viewBox="0 0 20 20">
@@ -247,7 +246,6 @@ export default function MenuHeader() {
 			{/* Main nav bar */}
 			<motion.header ref={headerRef} className={`w-full z-40 transition-colors duration-300 ${isScrolled ? "bg-white shadow-md" : "bg-brand"}`} style={{}} initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }} onClick={handleHeaderClick}>
 				<div className="container mx-auto p-4 flex justify-between items-center">
-					{/* ...existing code for nav bar... */}
 					<Link href="/" className="flex items-center space-x-4 cursor-pointer group">
 						<Image src="/rsp-norway-logo.png" alt="RSP Norway Logo" width={200} height={200} className="w-auto h-12 md:h-16 rounded-md" />
 						<span className={`hidden md:block leading-3 text-2xl font-bold ${isScrolled ? "text-black" : "text-white group-hover:text-slate-100"} transition-colors duration-200`}>
@@ -406,9 +404,18 @@ export default function MenuHeader() {
 					transitionProperty: "height, opacity",
 					transitionDuration: "300ms, 300ms",
 					transitionDelay: isModalOpen ? "0ms, 150ms" : "0ms, 0ms",
+					position: "relative",
 				}}
 			>
-				{isModalOpen && <SearchModal closeModal={closeModal} placeholder={t("search_placeholder")} />}
+				{isModalOpen && (
+					<>
+						{/* Backdrop to close modal on outside click */}
+						<div className="fixed inset-0 z-40 bg-black/10" onClick={closeModal} aria-label="Close search modal" />
+						<div className="relative z-50">
+							<SearchModal closeModal={closeModal} placeholder={t("search_placeholder")} />
+						</div>
+					</>
+				)}
 			</div>
 		</div>
 	);

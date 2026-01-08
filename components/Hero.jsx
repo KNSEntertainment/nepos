@@ -1,17 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-
+import { useTranslations, useLocale } from "next-intl";
 export default function Hero() {
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const [isAnimating, setIsAnimating] = useState(false);
 	const t = useTranslations("slider");
+	const locale = useLocale();
 	// Define your slides with unique content for each
 	const slides = [
 		{
@@ -25,17 +25,7 @@ export default function Hero() {
 			primaryColor: "#0094da",
 			primaryHover: "#0093dd",
 		},
-		// {
-		// 	image: "/rabi2.webp",
-		// 	title: "Building Nepal's Future Together",
-		// 	description: "RSP believes in liberal economy with social justice, empowering youth through digitalisation, and creating an inclusive society. We work for equitable progress of all Nepalis while fighting corruption and nepotism.",
-		// 	primaryButton: "Our Vision",
-		// 	primaryLink: "/vision",
-		// 	secondaryButton: "Recent Activities",
-		// 	secondaryLink: "/activities",
-		// 	primaryColor: "#0094da",
-		// 	primaryHover: "#0075b1",
-		// },
+
 		{
 			image: "/rabi3.webp",
 			title: t("title_2"),
@@ -123,7 +113,7 @@ export default function Hero() {
 
 					{/* Buttons */}
 					<motion.div className="flex gap-4 justify-center" key={`buttons-${currentSlide}`} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>
-						<Link href={currentSlideData.primaryLink}>
+						<Link href={currentSlideData.primaryLink} locale={locale}>
 							<Button
 								className={`text-white px-6 py-3 rounded-lg transition-all duration-300`}
 								style={{
@@ -136,7 +126,7 @@ export default function Hero() {
 								{currentSlideData.primaryButton}
 							</Button>
 						</Link>
-						<Link href={currentSlideData.secondaryLink}>
+						<Link href={currentSlideData.secondaryLink} locale={locale}>
 							<Button className="bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300">{currentSlideData.secondaryButton}</Button>
 						</Link>
 					</motion.div>

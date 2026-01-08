@@ -11,7 +11,7 @@ export default function Footer() {
 	return (
 		<footer className="bg-gradient-to-t to-blue-50 from-transparent text-black py-4">
 			{/* Main Footer Content */}
-			<div className="container mx-auto p-6">
+			<div className="container mx-auto px-4">
 				{/* Four Column Layout */}
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-6">
 					{/* About Column */}
@@ -74,10 +74,10 @@ export default function Footer() {
 				{/* Links Row */}
 				<nav className=" flex flex-col md:flex-row md:justify-between border-t border-gray-200 pt-1">
 					<ul className="flex space-x-4 justify-between mb-4 md:mb-0">
-						<li className="text-gray-500 hover:text-black transition-colors text-sm">
+						<li className="text-gray-500 hover:text-brand transition-colors text-sm">
 							<Link href="/terms-and-conditions">{t("terms")}</Link>
 						</li>
-						<li className="text-gray-500 hover:text-black transition-colors text-sm">
+						<li className="text-gray-500 hover:text-brand transition-colors text-sm">
 							<Link href="/privacy-policy">{t("privacy")}</Link>
 						</li>
 					</ul>
