@@ -8,26 +8,26 @@ export default function BlogPageClient({ blogData, blogsData }) {
 	const blogs = blogsData?.blogs || [];
 
 	if (!blog || !blog._id) {
-		return <p>Blog not found.</p>;
+		return <p className="flex items-center justify-center w-full min-h-screen bg-red-50 mt-24">Circulars not found.</p>;
 	}
 
 	return (
-		<div className="container max-w-5xl grid grid-cols-1 lg:grid-cols-3 gap-12 py-24 md:py-36 px-6 lg:px-0 mx-auto">
+		<div className="container grid grid-cols-1 lg:grid-cols-3 gap-12 py-40 md:py-48 px-4 mx-auto">
 			{/* Main Content */}
-			<main className="lg:col-span-2 max-w-5xl mx-auto">
-				<h1 className="mt-4 text-3xl md:text-5xl font-bold font-serif text-center">{blog.blogTitle}</h1>
-				<div className="flex gap-12 justify-center mt-4">
+			<main className="lg:col-span-2">
+				<h1 className="mt-4 text-xl md:text-3xl font-bold font-serif text-center">{blog.blogTitle}</h1>
+				<div className="flex gap-12 justify-center  md:mt-4">
 					<div className="flex gap-2">
-						<NotebookPen className=" mt-4 text-blue-500" />
+						<NotebookPen className=" mt-4 text-brand" />
 						<p className="mt-4 md:text-lg text-gray-700 max-w-3xl">{blog.blogAuthor ? blog.blogAuthor : "राष्ट्रिय स्वतन्त्र पार्टी"}</p>
 					</div>
 					<div className="flex gap-2">
-						<Calendar className="mt-4 text-blue-500" />
+						<Calendar className="mt-4 text-brand" />
 						<p className="mt-4 md:text-lg text-gray-700">{new Date(blog.createdAt).toISOString().slice(0, 10)}</p>
 					</div>
 				</div>
 				{/* Main Image */}
-				<div className="mt-8 md:mt-12">
+				<div className="mt-8 md:mt-12 px-4">
 					<Image src={blog.blogMainPicture || "/placeholder.jpg"} alt={blog?.blogTitle || "Blog Image"} width={900} height={500} className="w-full rounded-lg shadow-md" />
 				</div>
 				{/* Blog Content */}

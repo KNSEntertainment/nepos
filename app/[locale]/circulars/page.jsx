@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
 	return (
-		<div className="pt-20 md:pt-24 bg-white">
+		<div className="pt-32 md:pt-36 bg-white">
 			<Circulars />;
 		</div>
 	);

@@ -5,7 +5,7 @@ import useFetchData from "@/hooks/useFetchData";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function Circulars() {
 	const { data: blogs, loading } = useFetchData("/api/blogs", "blogs");
@@ -13,6 +13,7 @@ export default function Circulars() {
 	const router = useRouter();
 	const [navLoading, setNavLoading] = useState(false);
 	const t = useTranslations("circulars");
+	const locale = useLocale();
 
 	if (loading) {
 		return (
@@ -72,7 +73,7 @@ export default function Circulars() {
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{blogs &&
 						blogs.map((blog) => (
-							<div key={blog._id} className="group bg-white rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px]">
+							<div key={blog._id} className="group bg-white rounded-xl shadow-sm overflow-hidden md:transition-all md:duration-300 md:hover:shadow-lg md:hover:translate-y-[-4px]">
 								{/* Responsive flex: row on small, col on md+ */}
 								<div className="flex flex-row md:flex-col h-32 md:h-full bg-white">
 									{/* Image: small and left on mobile, top on md+ */}
@@ -90,7 +91,7 @@ export default function Circulars() {
 												className="bg-transparent p-0 m-0 border-none text-left w-full hover:text-brand focus:outline-none"
 												onClick={() => {
 													setNavLoading(true);
-													router.push(`/circulars/${blog?._id}`);
+													router.push(`/${locale}/circulars/${blog?._id}`);
 												}}
 												disabled={navLoading}
 											>
@@ -102,9 +103,9 @@ export default function Circulars() {
 							</div>
 						))}
 				</div>
-				{pathname !== "/circulars" && (
+				{pathname !== "/en/circulars" && (
 					<div className="flex justify-center mt-6">
-						<Link href="/circulars" className="inline-flex items-center px-5 py-2.5 font-medium text-sm rounded-lg bg-brand text-white hover:bg-brand transition-colors duration-200">
+						<Link href="/en/circulars" className="inline-flex items-center px-5 py-2.5 font-medium text-sm rounded-lg bg-brand text-white hover:bg-brand transition-colors duration-200">
 							{t("view_all")}
 							<svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
 								<path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
