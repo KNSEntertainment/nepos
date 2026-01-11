@@ -1,10 +1,20 @@
 "use client";
 import Link from "next/link";
 import { useActiveMenu } from "@/context/ActiveMenuContext";
-import { menuItems } from "@/components/DashboardMenuItems.js";
+import { BookImage, Settings, GalleryThumbnails, LayoutDashboard, Book, Newspaper, User, Download } from "lucide-react";
 
 export default function DashboardGrid() {
 	const { setActiveMenu } = useActiveMenu();
+	const menuItems = [
+		{ id: "dashboard", label: "Dashboard", icon: LayoutDashboard, color: "bg-brand", href: "/en/dashboard" },
+		{ id: "contactmessages", label: "Contact Messages", icon: Book, color: "bg-red-900", href: "/en/dashboard/contactmessages" },
+		{ id: "events", label: "Events", icon: BookImage, color: "bg-purple-500", href: "/en/dashboard/events" },
+		{ id: "blogs", label: "Blogs", icon: Newspaper, color: "bg-orange-700", href: "/en/dashboard/blogs" },
+		{ id: "gallery", label: "Gallery", icon: GalleryThumbnails, color: "bg-orange-500", href: "/en/dashboard/gallery" },
+		{ id: "downloads", label: "Downloads", icon: Download, color: "bg-red-500", href: "/en/dashboard/downloads" },
+		{ id: "users", label: "Users", icon: User, color: "bg-green-700", href: "/en/dashboard/users" },
+		{ id: "settings", label: "Profile Settings", icon: Settings, color: "bg-gray-500", href: "/en/dashboard/settings" },
+	];
 
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
