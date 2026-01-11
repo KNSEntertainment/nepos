@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, memo, useEffect, Suspense } from "react";
+import React, { useState, useCallback, memo, useEffect } from "react";
 import { Eye, EyeOff, Lock, Mail, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -177,9 +177,5 @@ function AuthFormContent() {
 }
 
 export default function AuthForm() {
-	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<AuthFormContent />
-		</Suspense>
-	);
+	return <AuthFormContent />;
 }

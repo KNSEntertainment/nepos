@@ -51,4 +51,4 @@ const DownloadSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-module.exports = mongoose.models.Download || mongoose.model("Download", DownloadSchema);
+export default mongoose.models.Download || mongoose.model("Download", DownloadSchema);

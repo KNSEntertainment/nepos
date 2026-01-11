@@ -16,8 +16,9 @@ export default function ContactPage() {
 	const [form, setForm] = useState({ name: "", email: "", message: "" });
 	const [success, setSuccess] = useState("");
 	const [error, setError] = useState("");
+	const [submitting, setSubmitting] = useState(false);
 
-	const { data: settings, loading } = useFetchData("/api/settings", "settings");
+	const { data: settings } = useFetchData("/api/settings", "settings");
 	const typedSettings = settings as Setting[] | undefined;
 	const t = useTranslations("contact");
 
@@ -29,6 +30,7 @@ export default function ContactPage() {
 		e.preventDefault();
 		setSuccess("");
 		setError("");
+		setSubmitting(true);
 		try {
 			const res = await fetch("/api/contact", {
 				method: "POST",
@@ -49,6 +51,7 @@ export default function ContactPage() {
 				setError("Failed to send message.");
 			}
 		}
+		setSubmitting(false);
 	}
 
 	return (
@@ -71,8 +74,8 @@ export default function ContactPage() {
 							<label className="block text-sm font-medium text-gray-700">{t("form.message")}</label>
 							<textarea name="message" value={form.message} onChange={handleChange} required rows={5} className="mt-1 block w-full rounded-md border border-gray-300 bg-white/80 shadow focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:outline-none px-4 py-2 text-gray-800 placeholder-gray-400" placeholder={t("form.message_placeholder")} />
 						</div>
-						<button type="submit" className="w-full py-3 px-6 bg-brand text-white font-semibold rounded-md shadow hover:bg-brand/90 transition-colors">
-							{loading ? t("form.sending") : t("form.send")}
+						<button type="submit" className="w-full py-3 px-6 bg-brand text-white font-semibold rounded-md shadow hover:bg-brand/90 transition-colors" disabled={submitting}>
+							{submitting ? t("form.sending") : t("form.send")}
 						</button>
 						{success && <p className="text-green-600 text-center mt-2">{t("success")}</p>}
 						{error && <p className="text-red-600 text-center mt-2">{t("error")}</p>}
