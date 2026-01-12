@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function TermsAndConditions() {
 	return (
-		<div className=" bg-gradient-to-br from-indigo-50 to-purple-50">
+		<div className="py-8">
 			{/* Header */}
-			<header className="bg-white shadow-sm border-b border-gray-200">
+			<header className="">
 				<div className="max-w-4xl mx-auto px-4 py-6">
 					<h1 className="text-3xl font-bold text-gray-900">RSP App Terms and Conditions</h1>
 					<p className="text-sm text-gray-600 mt-2">Submission Agreement</p>

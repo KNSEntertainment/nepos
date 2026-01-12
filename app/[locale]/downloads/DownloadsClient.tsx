@@ -126,7 +126,7 @@ export default function DownloadsClient({ documents, translations }: DownloadsCl
 				</div>
 				{/* Documents Grid */}{" "}
 				{filteredDocuments.length && filteredDocuments.length > 0 ? (
-					<div className="sm:px-6 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-12">
+					<div className="sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12">
 						{filteredDocuments.map((doc) => (
 							<div key={doc.id} className="flex bg-white rounded-lg shadow-sm md:shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden max-h-[224px] group">
 								{" "}

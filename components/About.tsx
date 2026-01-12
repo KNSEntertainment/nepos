@@ -3,8 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import HomeVideo from "./HomeVideo";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 export default function About() {
 	const t = useTranslations("about");
@@ -36,8 +36,8 @@ export default function About() {
 								</Link>
 							</div>
 						</div>
-						<div className="px-6 md:px-0 w-auto md:h-auto">
-							<HomeVideo />
+						<div className="px-6 md:px-0 w-auto md:h-auto bg-brand">
+							<Image src="/ghanti.png" alt="About RSP Norway" width={150} height={150} className="rounded-lg object-cover w-full p-12 h-full" />
 						</div>
 					</div>
 				</motion.div>

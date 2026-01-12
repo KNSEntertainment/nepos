@@ -159,7 +159,7 @@ export default function Header() {
 	return (
 		<div className="fixed inset-x-0 top-0 z-50">
 			{/* Utility Bar */}
-			<motion.section initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className={`h-11 border-b transition-colors duration-500 ${isScrolled ? "bg-gradient-to-r from-brand via-brand to-emerald-600" : "bg-neutral-50/95 backdrop-blur-md"}`}>
+			<motion.section initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className={`h-11 border-b transition-colors duration-500 ${isScrolled ? "bg-gradient-to-r from-brand via-brand to-emerald-600 text-white" : "bg-neutral-50/95 backdrop-blur-md"}`}>
 				<div className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between">
 					<div className="flex items-center gap-6 text-sm font-medium">
 						<a href="tel:+4796800984" className="hover:opacity-75 transition-opacity duration-200 flex items-center gap-2" aria-label="Call us">
@@ -194,7 +194,7 @@ export default function Header() {
 					{/* Logo */}
 					<Link href="/" className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 rounded-lg">
 						<div className="relative">
-							<Image src="/rsp-norway-logo.png" alt="RSP Norway" width={180} height={72} className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" />
+							<Image src="/rsp-norway-logo.png" alt="RSP Norway" width={48} height={48} className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" fetchPriority="high" priority />
 						</div>
 						<div className="flex flex-col leading-3">
 							<span className={`hidden md:block text-xl font-bold ${isScrolled ? "text-brand" : "text-white"}`}>{t("rsp")}</span>

@@ -104,7 +104,7 @@ export default function Hero() {
 						}}
 						transition={{ duration: 1.2, ease: "easeInOut" }}
 					>
-						<Image src={slide.image} alt={`RSP Norway Slide ${index + 1}`} width={1920} height={1080} className="w-full h-full object-cover" priority={index === 0} />
+						<Image src={slide.image} alt={`RSP Norway Slide ${index + 1}`} width={600} height={600} className="w-full h-full object-cover" priority={index === 0} fetchPriority="high" />
 					</motion.div>
 				))}
 

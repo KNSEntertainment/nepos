@@ -1,8 +1,20 @@
-// app/downloads/page.tsx
+import type { Metadata } from "next";
 import { getDownloads } from "@/lib/data/downloads";
 import DownloadsClient from "./DownloadsClient";
 import { getTranslations } from "next-intl/server";
 import SectionHeader from "@/components/SectionHeader";
+
+export const metadata: Metadata = {
+	title: "Downloads | RSP Norway",
+	description: "Download important documents, forms, and resources from RSP Norway. All files are available for members and visitors.",
+	openGraph: {
+		title: "Downloads | RSP Norway",
+		description: "Download important documents, forms, and resources from RSP Norway. All files are available for members and visitors.",
+		url: "/downloads",
+		siteName: "RSP Norway",
+		type: "website",
+	},
+};
 
 export default async function DownloadsPage() {
 	const t = await getTranslations("downloads");

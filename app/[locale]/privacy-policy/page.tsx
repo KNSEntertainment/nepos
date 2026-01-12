@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function PrivacyPolicy() {
 	return (
-		<div className=" bg-gradient-to-br from-blue-50 to-indigo-50">
+		<div className="py-8">
 			{/* Header */}
-			<header className="bg-white shadow-sm border-b border-gray-200">
+			<header className="">
 				<div className="max-w-4xl mx-auto px-4 py-6">
 					<h1 className="text-3xl font-bold text-gray-900">RSP Web/App Privacy Policy</h1>
 					<p className="text-sm text-gray-600 mt-2">Last Updated: December 2025</p>
