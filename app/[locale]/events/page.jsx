@@ -5,13 +5,13 @@ import { getNotices } from "@/lib/data/notices";
 import { normalizeDocs } from "@/lib/utils";
 
 export const metadata = {
-	title: "Notices | RSP Norway",
-	description: "Stay informed with the latest notices from RSP Norway. Get updates on events, announcements, and important information for our community.",
+	title: "Notices | NEPOS",
+	description: "Stay informed with the latest notices from NEPOS. Get updates on events, announcements, and important information for our community.",
 	openGraph: {
-		title: "Notices | RSP Norway",
-		description: "Stay informed with the latest notices from RSP Norway. Get updates on events, announcements, and important information for our community.",
+		title: "Notices | NEPOS",
+		description: "Stay informed with the latest notices from NEPOS. Get updates on events, announcements, and important information for our community.",
 		url: "/notices",
-		siteName: "RSP Norway",
+		siteName: "NEPOS",
 		type: "website",
 	},
 };

@@ -3,13 +3,13 @@ import MembershipPageClient from "./MembershipPageClient";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Membership | RSP Norway",
-	description: "Stay informed with the latest membership information from RSP Norway. Get updates on events, announcements, and important information for our community.",
+	title: "Membership | NEPOS",
+	description: "Stay informed with the latest membership information from NEPOS. Get updates on events, announcements, and important information for our community.",
 	openGraph: {
-		title: "Membership | RSP Norway",
-		description: "Stay informed with the latest membership information from RSP Norway. Get updates on events, announcements, and important information for our community.",
+		title: "Membership | NEPOS",
+		description: "Stay informed with the latest membership information from NEPOS. Get updates on events, announcements, and important information for our community.",
 		url: "/membership",
-		siteName: "RSP Norway",
+		siteName: "NEPOS",
 		type: "website",
 	},
 };

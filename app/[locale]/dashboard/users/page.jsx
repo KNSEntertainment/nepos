@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import RegisterForm from "@/components/RegisterForm";
 
-export default function UsersPage() {
+export default function UseNEPOSage() {
 	const [openUserModal, setOpenUserModal] = useState(false);
 	const [editUser, setEditUser] = useState(null);
 	const [search, setSearch] = useState("");

@@ -18,7 +18,7 @@ export default function FooterClient({ settings, t }) {
 					{/* Logo and Tagline */}
 					<div className="flex flex-col w-full justify-center">
 						<div className="flex flex-col w-full justify-center items-start md:items-center">
-							<Image src={settings?.[0]?.companyLogo || "/rsp-norway-logo.png"} alt={t.logo_alt} width={100} height={100} className="w-24 object-cover mb-4" />
+							<Image src={settings?.[0]?.companyLogo || "/NEPOS-norway-logo.png"} alt={t.logo_alt} width={100} height={100} className="w-24 object-cover mb-4" />
 							<h2 className="text-2xl font-bold text-center">{t.logo_head}</h2>
 							<p className="text-center max-w-md">{t.tagline}</p>
 						</div>
@@ -72,7 +72,7 @@ export default function FooterClient({ settings, t }) {
 							<Link href="/en/privacy-policy">{t.privacy}</Link>
 						</li>
 					</ul>
-					<div className="text-gray-500 text-sm">{t.copyright || `© ${new Date().getFullYear()} RSP Norway. All rights reserved.`}</div>
+					<div className="text-gray-500 text-sm">{t.copyright || `© ${new Date().getFullYear()} NEPOS. All rights reserved.`}</div>
 					<div className="text-gray-500 text-sm">
 						<span>{t.developed_by}</span>
 						<a href="https://harisanjel.com.np" target="_blank" rel="noopener noreferrer" className="font-semibold ml-1">

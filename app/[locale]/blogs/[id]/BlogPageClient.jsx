@@ -19,7 +19,7 @@ export default function BlogPageClient({ blogData, blogsData }) {
 				<div className="flex gap-12 justify-center  md:mt-4">
 					<div className="flex gap-2">
 						<NotebookPen className=" mt-4 text-brand" />
-						<p className="mt-4 md:text-lg text-gray-700 max-w-3xl">{blog.blogAuthor ? blog.blogAuthor : "राष्ट्रिय स्वतन्त्र पार्टी"}</p>
+						<p className="mt-4 md:text-lg text-gray-700 max-w-3xl">{blog.blogAuthor ? blog.blogAuthor : "नेपोस"}</p>
 					</div>
 					<div className="flex gap-2">
 						<Calendar className="mt-4 text-brand" />

@@ -159,22 +159,9 @@ export default function Header() {
 		{
 			title: t("home"),
 			href: "/",
-			dropdownItems: [
-				{ title: t("about"), href: "/about-us" },
-				{ title: t("privacy"), href: "/privacy-policy" },
-				{ title: t("terms"), href: "/terms-and-conditions" },
-			],
+			dropdownItems: [{ title: t("about"), href: "/about-us" }],
 		},
 
-		{
-			title: t("updates"),
-			href: "/notices",
-			dropdownItems: [
-				{ title: t("notices"), href: "/notices" },
-				{ title: t("events"), href: "/events" },
-				{ title: t("circulars"), href: "/circulars" },
-			],
-		},
 		{
 			title: t("gallery"),
 			href: "/gallery",
@@ -183,7 +170,7 @@ export default function Header() {
 				{ title: t("videos"), href: "/video-gallery" },
 			],
 		},
-		{ title: t("downloads"), href: "/downloads" },
+		{ title: t("events"), href: "/events" },
 		{ title: t("contact"), href: "/contact" },
 	];
 
@@ -278,12 +265,12 @@ export default function Header() {
 						<a href="tel:+4796800984" className="hover:opacity-75 transition-opacity duration-200 flex items-center gap-2" aria-label="Call us">
 							{/* <span className="sm:inline">📞</span> */}
 							<Phone size={16} />
-							{tr("phone_small_device")}
+							{tr("phone")}
 						</a>
-						<a href="mailto:info@rspnorway.org" className="hidden md:flex items-center gap-2 hover:opacity-75 transition-opacity duration-200" aria-label="Email us">
+						<a href="mailto:info@nepos.org" className="hidden md:flex items-center gap-2 hover:opacity-75 transition-opacity duration-200" aria-label="Email us">
 							{/* <span>✉️</span> */}
 							<Mail size={16} />
-							info@rspnorway.org
+							info@nepos.org
 						</a>
 						<SocialMediaLinks />
 					</div>
@@ -300,18 +287,18 @@ export default function Header() {
 				transition={{ duration: 0.4, ease: "easeOut" }}
 				className={`
 		  transition-colors duration-500
-		  ${isScrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)]" : "bg-gradient-to-r from-brand via-brand to-emerald-600"}
+		  ${isScrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)]" : "bg-brand"}
         `}
 			>
 				<div className="container mx-auto px-4 lg:px-6 h-16 md:h-24 flex items-center justify-between border-b border-brand">
 					{/* Logo */}
 					<Link href="/" className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 rounded-lg">
 						<div className="relative">
-							<Image src="/rsp-norway-logo.png" alt="RSP Norway" width={48} height={48} className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" fetchPriority="high" priority />
+							<Image src="/nepos.png" alt="NEPOS" width={48} height={48} className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" fetchPriority="high" priority />
 						</div>
 						<div className="flex flex-col leading-3">
-							<span className={`hidden md:block text-xl font-bold ${isScrolled ? "text-brand" : "text-white"}`}>{t("rsp")}</span>
-							<span className={`hidden md:block text-md ${isScrolled ? "text-brand" : "text-white"}`}>{t("norway")}</span>
+							<span className={`hidden md:block text-xl font-bold ${isScrolled ? "text-gray-900" : "text-black"}`}>{t("NEPOS")}</span>
+							{/* <span className={`hidden md:block text-md ${isScrolled ? "text-brand" : "text-white"}`}>{t("norway")}</span> */}
 						</div>
 					</Link>
 

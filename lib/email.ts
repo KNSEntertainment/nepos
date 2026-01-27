@@ -48,10 +48,10 @@ export async function sendWelcomeEmail({ name, email, setupToken }: sendWelcomeE
 	const setupUrl = `${process.env.NEXTAUTH_URL || "http://localhost:3000"}/en/set-password?token=${setupToken}`;
 
 	const mailOptions = {
-		from: `"RSP Norway" <${process.env.EMAIL_USER}>`,
+		from: `"NEPOS" <${process.env.EMAIL_USER}>`,
 		to: email,
-		subject: "Welcome to RSP Norway - Set Your Password",
-		text: `Hello ${name},\n\nWelcome to RSP Norway! Your membership has been approved.\n\nPlease set your password by clicking the link below:\n${setupUrl}\n\nThis link is valid for 24 hours.\n\nBest regards,\nRSP Norway Team`,
+		subject: "Welcome to NEPOS - Set Your Password",
+		text: `Hello ${name},\n\nWelcome to NEPOS! Your membership has been approved.\n\nPlease set your password by clicking the link below:\n${setupUrl}\n\nThis link is valid for 24 hours.\n\nBest regards,\nNEPOS Team`,
 		html: `
 			<!DOCTYPE html>
 			<html>
@@ -68,11 +68,11 @@ export async function sendWelcomeEmail({ name, email, setupToken }: sendWelcomeE
 			<body>
 				<div class="container">
 					<div class="header">
-						<h1>Welcome to RSP Norway!</h1>
+						<h1>Welcome to NEPOS!</h1>
 					</div>
 					<div class="content">
 						<p>Hello <strong>${name}</strong>,</p>
-						<p>Congratulations! Your membership application has been approved. We're excited to have you as part of the RSP Norway community.</p>
+						<p>Congratulations! Your membership application has been approved. We're excited to have you as part of the NEPOS community.</p>
 						<p>To complete your account setup, please set your password by clicking the button below:</p>
 						<center>
 							<a href="${setupUrl}" class="button">Set Your Password</a>
@@ -88,7 +88,7 @@ export async function sendWelcomeEmail({ name, email, setupToken }: sendWelcomeE
 							<li>Stay connected with the community</li>
 						</ul>
 						<p>If you have any questions, feel free to reach out to us.</p>
-						<p>Best regards,<br><strong>RSP Norway Team</strong></p>
+						<p>Best regards,<br><strong>NEPOS Team</strong></p>
 					</div>
 					<div class="footer">
 						<p>This is an automated email. Please do not reply to this message.</p>

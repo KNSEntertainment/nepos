@@ -6,13 +6,13 @@ import Gallery from "@/components/Gallery";
 // import HeroSection from "@/components/HeroSection";
 
 export const metadata: Metadata = {
-	title: "Home | RSP Norway",
-	description: "Welcome to RSP Norway. Explore our latest news, events, and gallery showcasing our vibrant community.",
+	title: "Home | NEPOS",
+	description: "Welcome to NEPOS. Explore our latest news, events, and gallery showcasing our vibrant community.",
 	openGraph: {
-		title: "Home | RSP Norway",
-		description: "Welcome to RSP Norway. Explore our latest news, events, and gallery showcasing our vibrant community.",
+		title: "Home | NEPOS",
+		description: "Welcome to NEPOS. Explore our latest news, events, and gallery showcasing our vibrant community.",
 		url: "/",
-		siteName: "RSP Norway",
+		siteName: "NEPOS",
 		type: "website",
 	},
 };

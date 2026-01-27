@@ -1,12 +1,13 @@
 {
-	"name": "rsp-norway",
+	"name": "nepos",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"create-admin": "node scripts/createAdmin.js"
 	},
 	"dependencies": {
 		"@radix-ui/react-alert-dialog": "^1.1.2",

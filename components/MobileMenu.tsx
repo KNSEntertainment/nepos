@@ -34,10 +34,10 @@ const MobileMenu = ({ navItems, closeMenu }: MobileMenuProps) => {
 					<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.3 }} className="mt-12 pt-8 border-t border-white/20">
 						<p className="text-white/90 text-lg font-medium mb-4 px-6">Contact Us</p>
 						<a href="tel:+4796800984" className="block px-6 text-white hover:bg-white/10 rounded-xl transition-all duration-200">
-							📞 {tr("phone_small_device")}
+							📞 {tr("phone")}
 						</a>
-						<a href="mailto:info@rspnorway.org" className="block px-6 text-white hover:bg-white/10 rounded-xl transition-all duration-200 mt-2">
-							✉️ info@rspnorway.org
+						<a href="mailto:info@nepos.org" className="block px-6 text-white hover:bg-white/10 rounded-xl transition-all duration-200 mt-2">
+							✉️ info@nepos.org
 						</a>
 					</motion.div>
 					<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55, duration: 0.3 }} className="mt-8 pt-8 border-t border-white/20">

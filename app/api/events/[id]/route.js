@@ -57,7 +57,7 @@ export async function PUT(request, { params }) {
 				console.log("Old video URL:", event.eventvideoUrl);
 				await deleteFromCloudinary(event.eventvideoUrl);
 			}
-			eventData.eventvideoUrl = await uploadToCloudinary(eventvideo, "rspnorway_event_images");
+			eventData.eventvideoUrl = await uploadToCloudinary(eventvideo, "NEPOSnorway_event_images");
 		}
 
 		// Handle other uploads similarly...

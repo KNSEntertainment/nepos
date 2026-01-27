@@ -190,7 +190,7 @@ export default function ProfileClient({ translations: t }: Props) {
 		switch (status) {
 			case "approved":
 				return (
-					<Badge className="bg-green-500 text-white">
+					<Badge className="bg-red-500 text-white">
 						<CheckCircle className="w-3 h-3 mr-1" />
 						{t.approved}
 					</Badge>

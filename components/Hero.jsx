@@ -80,7 +80,7 @@ export default function FullWidthHero() {
 									</Link>
 									<Link href={slides[currentSlide].secondaryLink} locale={locale}>
 										<Button variant="outline" className="h-16 px-10 text-lg font-bold rounded-full border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-blue-900 transition-all flex items-center gap-2">
-											{t("explore_rsp")}
+											{t("explore_NEPOS")}
 											<ArrowRight className="w-5 h-5" />
 										</Button>
 									</Link>
@@ -149,7 +149,7 @@ export default function FullWidthHero() {
 // 			description: t("subtitle_1"),
 // 			primaryButton: t("become_a_member"),
 // 			primaryLink: "/membership",
-// 			secondaryButton: t("explore_rsp"),
+// 			secondaryButton: t("explore_NEPOS"),
 // 			secondaryLink: "/about-us",
 // 			primaryColor: "#0094da",
 // 			primaryHover: "#0093dd",
@@ -204,7 +204,7 @@ export default function FullWidthHero() {
 // 	return (
 // 		<div className="relative left-1/2 right-1/2 w-screen max-h-screen max-w-none -translate-x-1/2">
 // 			<Head>
-// 				<title>RSP Norway</title>
+// 				<title>NEPOS</title>
 // 			</Head>
 
 // 			{/* Hero Section */}
@@ -233,7 +233,7 @@ export default function FullWidthHero() {
 // 						}}
 // 						transition={{ duration: 1.2, ease: "easeInOut" }}
 // 					>
-// 						<Image src={slide.image} alt={`RSP Norway Slide ${index + 1}`} width={600} height={600} className="w-full h-full object-cover" priority={index === 0} fetchPriority="high" />
+// 						<Image src={slide.image} alt={`NEPOS Slide ${index + 1}`} width={600} height={600} className="w-full h-full object-cover" priority={index === 0} fetchPriority="high" />
 // 					</motion.div>
 // 				))}
 

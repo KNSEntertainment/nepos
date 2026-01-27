@@ -1,40 +1,3 @@
-// "use client";
-// import Image from "next/image";
-// import Lightbox from "yet-another-react-lightbox";
-// import "yet-another-react-lightbox/styles.css";
-// import { Zoom } from "yet-another-react-lightbox/plugins";
-// import { useState } from "react";
-// import { useTranslations } from "next-intl";
-
-// export default function GalleryClient({ images }) {
-// 	const [open, setOpen] = useState(false);
-// 	const [index, setIndex] = useState(0);
-// 	const t = useTranslations("gallery");
-
-// 	return (
-// 		<>
-// 			<div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
-// 				{images.map((img, i) => (
-// 					<div
-// 						key={i}
-// 						className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group transition-all duration-300 hover:scale-105 aspect-[4/3]"
-// 						onClick={() => {
-// 							setIndex(i);
-// 							setOpen(true);
-// 						}}
-// 					>
-// 						<Image src={img.src} alt={img.alt} width={200} height={200} className="w-full h-full object-cover object-center group-hover:brightness-75 transition-all duration-300" loading="lazy" />
-// 						<div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-// 							<span className="text-white text-lg font-semibold">{t("zoom_in")}</span>
-// 						</div>
-// 					</div>
-// 				))}
-// 			</div>
-// 			<Lightbox open={open} close={() => setOpen(false)} slides={images} index={index} plugins={[Zoom]} animation={{ fade: 300 }} />
-// 		</>
-// 	);
-// }
-
 "use client";
 import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
@@ -42,13 +5,11 @@ import "yet-another-react-lightbox/styles.css";
 import { Zoom, Fullscreen, Thumbnails } from "yet-another-react-lightbox/plugins";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import { Maximize2 } from "lucide-react";
 
 export default function GalleryClient({ images }) {
 	const [open, setOpen] = useState(false);
 	const [index, setIndex] = useState(0);
-	const t = useTranslations("gallery");
 
 	return (
 		<div className="w-full">
@@ -79,7 +40,7 @@ export default function GalleryClient({ images }) {
 								</div>
 							</div>
 
-							<Image src={img.src} alt={img.alt || "Gallery Image"} fill className="object-cover transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw" />
+							<Image src={img.src} alt={img.alt || "Gallery Image"} fill className="object-cover object-top transition-transform duration-700 group-hover:scale-110" sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw" />
 
 							{/* Subtle caption overlay for political context */}
 							<div className="absolute bottom-0 left-0 right-0 p-4 z-20 bg-gradient-to-t from-black/70 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">

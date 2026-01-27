@@ -9,7 +9,7 @@ import { Trash2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import toast from "react-hot-toast";
 
-export default function SubscribersPage() {
+export default function SubscribeNEPOSage() {
 	const [deleteId, setDeleteId] = useState(null);
 	const { data: subscribers, error, loading, mutate } = useFetchData("/api/subscribers", "subscribers");
 

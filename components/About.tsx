@@ -27,7 +27,7 @@ export default function About() {
 							</div>
 
 							<div className="my-4">
-								<Link href={`/${locale}/message-from-rsp`}>
+								<Link href={`/${locale}/message-from-NEPOS`}>
 									<Button className="bg-brand text-white px-6 py-3 rounded transition-colors duration-300 inline-flex items-center group">
 										{t("read_more")}
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -38,7 +38,7 @@ export default function About() {
 							</div>
 						</div>
 						<div className="px-6 md:px-0 w-auto md:h-auto bg-brand">
-							<Image src="/ghanti.png" alt="About RSP Norway" width={150} height={150} className="rounded-lg object-cover w-full p-12 h-full" />
+							<Image src="/nepos.png" alt="About NEPOS" width={150} height={150} className="rounded-lg object-cover w-full p-12 h-full" />
 						</div>
 					</div>
 				</motion.div>

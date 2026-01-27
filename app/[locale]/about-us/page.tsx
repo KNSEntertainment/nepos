@@ -5,13 +5,13 @@ import SectionHeader from "@/components/SectionHeader";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "About Us | RSP Norway",
-	description: "Learn more about RSP Norway, our mission, vision, and the community we serve. Discover our story and values.",
+	title: "About Us | NEPOS",
+	description: "Learn more about NEPOS, our mission, vision, and the community we serve. Discover our story and values.",
 	openGraph: {
-		title: "About Us | RSP Norway",
-		description: "Learn more about RSP Norway, our mission, vision, and the community we serve. Discover our story and values.",
+		title: "About Us | NEPOS",
+		description: "Learn more about NEPOS, our mission, vision, and the community we serve. Discover our story and values.",
 		url: "/about-us",
-		siteName: "RSP Norway",
+		siteName: "NEPOS",
 		type: "website",
 	},
 };
