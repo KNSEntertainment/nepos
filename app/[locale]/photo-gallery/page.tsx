@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { X, Heart, Share2, Download } from "lucide-react";
 import { useTranslations } from "next-intl";
+import SectionHeader from "@/components/SectionHeader";
 
 interface Photo {
 	id: number;
@@ -28,55 +29,11 @@ const PhotoGallery = () => {
 	];
 
 	return (
-		<div
-			style={{
-				minHeight: "100vh",
-				position: "relative",
-				overflow: "hidden",
-			}}
-		>
-			{/* Animated background elements */}
-			<div
-				style={{
-					position: "absolute",
-					top: 0,
-					left: 0,
-					right: 0,
-					bottom: 0,
-					background: "radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(78, 205, 196, 0.03) 0%, transparent 50%)",
-					pointerEvents: "none",
-				}}
-			/>
-
-			<div
-				style={{
-					maxWidth: "1600px",
-					margin: "0 auto",
-					padding: "80px 40px",
-					position: "relative",
-					zIndex: 1,
-				}}
-			>
-				{/* Header */}
-				<header
-					style={{
-						marginBottom: "80px",
-						animation: "fadeInDown 0.8s ease-out",
-					}}
-				>
-					<h1 className="text-2xl">{t("title")}</h1>
-					<p
-						style={{
-							fontFamily: '"DM Sans", sans-serif',
-							fontSize: "1.125rem",
-							color: "#888",
-							letterSpacing: "0.05em",
-							textTransform: "uppercase",
-							fontWeight: 500,
-						}}
-					>
-						{t("description")}
-					</p>
+		<div>
+			<div>
+				<header className="text-center mb-12">
+					<SectionHeader heading={t("title")} />
+					<p className="text-slate-600 mt-4 text-lg max-w-2xl mx-auto">{t("description")}</p>
 				</header>
 
 				{/* Masonry Grid */}

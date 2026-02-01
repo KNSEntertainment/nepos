@@ -27,12 +27,13 @@ interface NavItemProps {
 	href: string;
 	isScrolled: boolean;
 	pathname: string;
+	useDarkText: boolean;
 	dropdownItems?: { title: string; href: string }[];
 	activeDropdown: string | null;
 	setActiveDropdown: (dropdown: string | null) => void;
 }
 
-function NavItem({ title, href, isScrolled, pathname, dropdownItems, activeDropdown, setActiveDropdown }: NavItemProps) {
+function NavItem({ title, href, pathname, useDarkText, dropdownItems, activeDropdown, setActiveDropdown }: NavItemProps) {
 	const isActive = pathname === href;
 	const hasDropdown = !!dropdownItems?.length;
 	const isOpen = activeDropdown === href;
@@ -77,9 +78,9 @@ function NavItem({ title, href, isScrolled, pathname, dropdownItems, activeDropd
 					className={`
             relative px-4 py-2 flex items-center gap-2
             transition-all duration-300 font-medium tracking-wide
-            ${isScrolled ? "text-neutral-700 hover:text-brand" : "text-white/90 hover:text-white"}
+            ${useDarkText ? "text-neutral-900/80 hover:text-neutral-900" : "text-white/90 hover:text-white"}
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
-            ${isActive ? "text-brand" : ""}
+            ${isActive ? (useDarkText ? "text-neutral-900" : "text-white") : ""}
           `}
 				>
 					<span className="relative">
@@ -95,9 +96,9 @@ function NavItem({ title, href, isScrolled, pathname, dropdownItems, activeDropd
 					className={`
             relative px-4 py-2 block font-medium tracking-wide
             transition-all duration-300
-            ${isScrolled ? "text-neutral-700 hover:text-brand" : "text-white/90 hover:text-white"}
+            ${useDarkText ? "text-neutral-900/80 hover:text-neutral-900" : "text-white/90 hover:text-white"}
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
-            ${isActive ? "text-brand" : ""}
+            ${isActive ? (useDarkText ? "text-neutral-900" : "text-white") : ""}
           `}
 				>
 					<span className="relative">
@@ -183,6 +184,8 @@ export default function Header() {
 	const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 	const { data: session } = useSession();
 	const user = session?.user;
+	const isHome = pathname === "/" || pathname === "/en" || pathname === "/no" || pathname === "/ne";
+	const useDarkText = !isHome || isScrolled;
 
 	// Wrapper function to manage hover delays
 	const handleDropdownChange = (newDropdown: string | null) => {
@@ -257,10 +260,10 @@ export default function Header() {
 	/* ---------------------------------- */
 
 	return (
-		<div className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
+		<div className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
 			{/* Utility Bar */}
-			<motion.section initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className={`h-11 border-b transition-colors duration-500 ${isScrolled ? "bg-gradient-to-r from-brand via-brand to-emerald-600 text-white" : "bg-neutral-50/95 backdrop-blur-md"}`}>
-				<div className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between">
+			<motion.section initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className=" h-11 transition-colors duration-500 backdrop-blur-md">
+				<div className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between text-white">
 					<div className="flex items-center gap-6 text-sm font-medium">
 						<a href="tel:+4796800984" className="hover:opacity-75 transition-opacity duration-200 flex items-center gap-2" aria-label="Call us">
 							{/* <span className="sm:inline">📞</span> */}
@@ -275,37 +278,28 @@ export default function Header() {
 						<SocialMediaLinks />
 					</div>
 					<div className="flex items-center gap-4">
-						<LanguageSelector isScrolled={isScrolled} />
+						<LanguageSelector />
 					</div>
 				</div>
 			</motion.section>
 
 			{/* Main Header */}
-			<motion.header
-				initial={{ y: -100 }}
-				animate={{ y: 0 }}
-				transition={{ duration: 0.4, ease: "easeOut" }}
-				className={`
-		  transition-colors duration-500
-		  ${isScrolled ? "bg-white/95 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)]" : "bg-brand"}
-        `}
-			>
-				<div className="container mx-auto px-4 lg:px-6 h-16 md:h-24 flex items-center justify-between border-b border-brand">
+			<header className={`transition-colors duration-300 ${useDarkText ? "bg-white/95 shadow-sm" : "bg-transparent"}`}>
+				<div className="container mx-auto px-4 lg:px-6 h-16 md:h-24 flex items-center justify-between ">
 					{/* Logo */}
-					<Link href="/" className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2 rounded-lg">
+					<Link href="/" className="flex flex-col items-center bg-white/20 rounded-full px-4 py-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2">
 						<div className="relative">
-							<Image src="/nepos.png" alt="NEPOS" width={48} height={48} className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105" fetchPriority="high" priority />
+							<Image src="/nepos.png" alt="NEPOS" width={48} height={48} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" fetchPriority="high" priority />
 						</div>
-						<div className="flex flex-col leading-3">
-							<span className={`hidden md:block text-xl font-bold ${isScrolled ? "text-gray-900" : "text-black"}`}>{t("NEPOS")}</span>
-							{/* <span className={`hidden md:block text-md ${isScrolled ? "text-brand" : "text-white"}`}>{t("norway")}</span> */}
+						<div className="leading-3">
+							<span className="hidden md:block text-md font-bold text-black">{t("NEPOS")}</span>
 						</div>
 					</Link>
 
 					{/* Desktop Nav */}
 					<nav className="hidden lg:flex items-center gap-2" role="navigation">
 						{navItems.map((item) => (
-							<NavItem key={item.href} {...item} isScrolled={isScrolled} pathname={pathname} activeDropdown={activeDropdown} setActiveDropdown={handleDropdownChange} />
+							<NavItem key={item.href} {...item} isScrolled={isScrolled} pathname={pathname} useDarkText={useDarkText} activeDropdown={activeDropdown} setActiveDropdown={handleDropdownChange} />
 						))}
 					</nav>
 
@@ -314,12 +308,12 @@ export default function Header() {
 						<button
 							onClick={() => setIsModalOpen(true)}
 							aria-label="Open search"
-							className={`
+							className="
                 h-8 md:h-11 w-8 md:w-11 rounded-xl flex items-center justify-center
                 transition-all duration-300 hover:scale-105 active:scale-95
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
-                ${isScrolled ? "bg-neutral-100 hover:bg-neutral-200 text-neutral-700" : "bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm"}
-              `}
+                focus-visible:outline-black focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
+                bg-gray-200 hover:bg-white/30 text-black backdrop-blur-sm
+              "
 						>
 							<Search size={19} />
 						</button>
@@ -329,12 +323,12 @@ export default function Header() {
 						) : (
 							<Link
 								href="/login"
-								className={`
+								className="
                   px-4 md:px-6 py-1 md:py-2.5 rounded-xl font-semibold tracking-wide
                   transition-all duration-300 hover:scale-105 active:scale-95
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
-                  ${isScrolled ? "bg-gradient-to-r from-brand to-emerald-600 text-white shadow-md hover:shadow-lg" : "bg-white text-brand shadow-md hover:shadow-lg"}
-                `}
+                  bg-white text-brand shadow-md hover:shadow-lg
+                "
 							>
 								{t("login")}
 							</Link>
@@ -342,11 +336,12 @@ export default function Header() {
 
 						<button
 							className={`
-                lg:hidden h-8 md:h-11 w-8 md:w-11 rounded-xl flex items-center justify-center
-                transition-all duration-300
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
-                ${isScrolled ? "bg-neutral-100 hover:bg-neutral-200 text-neutral-700" : "bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm"}
-              `}
+								lg:hidden h-8 md:h-11 w-8 md:w-11 rounded-xl flex items-center justify-center
+								transition-all duration-300
+								focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2
+								${useDarkText ? "bg-black/5 hover:bg-black/10 text-neutral-900" : "bg-white/20 hover:bg-white/30 text-white"}
+								backdrop-blur-sm
+							`}
 							onClick={() => setIsMenuOpen((v) => !v)}
 							aria-label={isMenuOpen ? "Close menu" : "Open menu"}
 							aria-expanded={isMenuOpen}
@@ -365,7 +360,7 @@ export default function Header() {
 						</button>
 					</div>
 				</div>
-			</motion.header>
+			</header>
 
 			{/* Mobile Menu */}
 			<AnimatePresence>{isMenuOpen && <MobileMenu navItems={navItems} isScrolled={isScrolled} pathname={pathname} closeMenu={() => setIsMenuOpen(false)} />}</AnimatePresence>

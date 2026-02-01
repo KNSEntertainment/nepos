@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Play, Pause, Volume2, VolumeX, X } from "lucide-react";
 import { useTranslations } from "next-intl";
+import SectionHeader from "@/components/SectionHeader";
 
 interface Video {
 	id: number;
@@ -169,35 +170,12 @@ const VideoGallery: React.FC = () => {
 				}}
 			/>
 
-			<div
-				style={{
-					maxWidth: "1600px",
-					margin: "0 auto",
-					padding: "80px 40px",
-					position: "relative",
-					zIndex: 1,
-				}}
-			>
+			<div>
 				{/* Header */}
-				<header
-					style={{
-						marginBottom: "80px",
-						animation: "fadeInDown 0.8s ease-out",
-					}}
-				>
-					<h1 className="text-2xl">{t("video_title")}</h1>
-					<p
-						style={{
-							fontFamily: '"Space Mono", monospace',
-							fontSize: "1rem",
-							color: "#666",
-							letterSpacing: "0.15em",
-							textTransform: "uppercase",
-							fontWeight: 400,
-						}}
-					>
-						{t("video_description")}
-					</p>
+
+				<header className="text-center mb-12">
+					<SectionHeader heading={t("video_title")} />
+					<p className="text-slate-600 mt-4 text-lg max-w-2xl mx-auto">{t("video_description")}</p>
 				</header>
 
 				{/* Video Grid */}

@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import ClientLayout from "./ClientLayout";
 import { NextIntlClientProvider } from "next-intl";
 import Header from "@/components/Header";
+import MainWrapper from "@/components/MainWrapper";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -23,7 +24,7 @@ export default function LocaleLayout({ children }: { children: React.ReactNode }
 				<ClientLayout>
 					<NextIntlClientProvider>
 						<Header />
-						<div className="container mx-auto mt-24 md:mt-[140px] md:mb-12 min-h-screen">{children}</div>
+						<MainWrapper>{children}</MainWrapper>
 						<Footer />
 					</NextIntlClientProvider>
 				</ClientLayout>

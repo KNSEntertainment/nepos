@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function FooterClient({ settings, t }) {
 	return (
-		<footer className="bg-gradient-to-t to-blue-50 from-transparent text-black pt-12 pb-8">
+		<footer className="bg-gradient-to-t to-red-100 from-pink-50 text-black pt-12 pb-8">
 			{/* Main Footer Content */}
 			<div className="container mx-auto px-4">
 				{/* Four Column Layout */}

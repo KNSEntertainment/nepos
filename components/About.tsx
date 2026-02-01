@@ -16,7 +16,7 @@ export default function About() {
 				<motion.div className="mx-auto bg-blue-50 overflow-hidden" initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
 					{/* Content with padding */}
 					<div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center py-6 md:py-0">
-						<div className="px-6 py-4 md:px-12">
+						<div className="px-6 py-12  md:p-16">
 							<h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-800 ">
 								{t("title").split(" ")[0]}
 								<span className="text-brand mt-1"> {t("title").split(" ").slice(1).join(" ")}</span>
@@ -37,8 +37,8 @@ export default function About() {
 								</Link>
 							</div>
 						</div>
-						<div className="px-6 md:px-0 w-auto md:h-auto bg-brand">
-							<Image src="/nepos.png" alt="About NEPOS" width={150} height={150} className="rounded-lg object-cover w-full p-12 h-full" />
+						<div className="px-6 md:px-0 w-auto md:h-auto">
+							<Image src="/neposposter.jpg" alt="About NEPOS" width={150} height={150} className="object-cover w-full h-full pr-12 md:pr-16" />
 						</div>
 					</div>
 				</motion.div>

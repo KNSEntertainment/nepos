@@ -7,7 +7,7 @@ export default {
 		extend: {
 			colors: {
 				brand: {
-					DEFAULT: "#00ac60",
+					DEFAULT: "#BF1171",
 				},
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",

@@ -41,7 +41,7 @@ const LoggedInUser = ({ user }: { user: SessionUser }) => {
 			</button>
 			<AnimatePresence>
 				{showUserDropdown && (
-					<motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-black/5 overflow-hidden">
+					<motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="absolute right-0 mt-2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] ring-1 ring-black/5 overflow-hidden z-[100]">
 						<div className="px-5 py-4 border-b border-neutral-100">
 							<p className="font-semibold text-neutral-900 truncate">{user.email}</p>
 							<p className="text-xs text-neutral-500 mt-1">Signed in</p>
