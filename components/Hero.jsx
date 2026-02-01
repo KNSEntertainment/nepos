@@ -71,15 +71,15 @@ export default function FullWidthHero() {
 					<div className="max-w-3xl">
 						<AnimatePresence mode="wait">
 							<motion.div key={currentSlide} initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }} transition={{ duration: 0.7, ease: "easeOut" }}>
-								<h1 className="text-3xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tighter">{slides[currentSlide].title}</h1>
-								<p className="text-xl md:text-2xl text-blue-100/80 mb-10 leading-relaxed font-light">{slides[currentSlide].description}</p>
+								<h1 className="text-3xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight tracking-tighter">{slides[currentSlide].title}</h1>
+								<p className="text-xl md:text-2xl text-blue-100/80 mb-10 md:leading-relaxed font-light">{slides[currentSlide].description}</p>
 
-								<div className="flex flex-wrap gap-5">
+								<div className="flex flex-wrap gap-2 md:gap-5">
 									<Link href={slides[currentSlide].primaryLink} locale={locale}>
-										<Button className="h-16 px-10 text-lg font-bold rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-2xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">{t("become_a_member")}</Button>
+										<Button className="h-12 md:px-10 md:text-lg font-bold rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-2xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">{t("become_a_member")}</Button>
 									</Link>
 									<Link href={slides[currentSlide].secondaryLink} locale={locale}>
-										<Button variant="outline" className="h-16 px-10 text-lg font-bold rounded-full border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-blue-900 transition-all flex items-center gap-2">
+										<Button variant="outline" className="h-12 md:px-10 md:text-lg font-bold rounded-full border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-blue-900 transition-all flex items-center gap-2">
 											{t("explore_NEPOS")}
 											<ArrowRight className="w-5 h-5" />
 										</Button>

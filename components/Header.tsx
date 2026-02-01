@@ -259,8 +259,10 @@ export default function Header() {
 	/* Render */
 	/* ---------------------------------- */
 
+	const headerZIndex = isMenuOpen ? "z-[9999]" : "z-[60]";
+
 	return (
-		<div className={`fixed top-0 left-0 right-0 z-[60] transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
+		<div className={`fixed top-0 left-0 right-0 ${headerZIndex} transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
 			{/* Utility Bar */}
 			<motion.section initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className=" h-11 transition-colors duration-500 backdrop-blur-md">
 				<div className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between text-white">
@@ -287,7 +289,7 @@ export default function Header() {
 			<header className={`transition-colors duration-300 ${useDarkText ? "bg-white/95 shadow-sm" : "bg-transparent"}`}>
 				<div className="container mx-auto px-4 lg:px-6 h-16 md:h-24 flex items-center justify-between ">
 					{/* Logo */}
-					<Link href="/" className="flex flex-col items-center bg-white/20 rounded-full px-4 py-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2">
+					<Link href="/" className="flex flex-col items-center bg-white/20 rounded-full md:px-4 md:py-3 p-1 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/50 focus-visible:ring-offset-2">
 						<div className="relative">
 							<Image src="/nepos.png" alt="NEPOS" width={48} height={48} className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" fetchPriority="high" priority />
 						</div>

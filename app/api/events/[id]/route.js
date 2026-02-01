@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 import connectDB from "@/lib/mongodb";
 import Event from "@/models/Event.Model";
-import { v2 as cloudinary } from "cloudinary";
-import { uploadToCloudinary } from "@/utils/saveFileToCloudinaryUtils";
+import { uploadToCloudinary, deleteFromCloudinary } from "@/utils/saveFileToCloudinaryUtils";
 
 const JWT_SECRET = process.env.JWT_SECRET_KEY;
 
@@ -12,22 +11,6 @@ export const config = {
 		bodyParser: false,
 	},
 };
-
-async function deleteFromCloudinary(url) {
-	try {
-		// Delete the file from Cloudinary
-		const publicId = url.split("/").pop().split(".")[0];
-		console.log("Deleting Cloudinary publicId:", publicId);
-		const result = await cloudinary.uploader.destroy(`event_images/${publicId}`);
-		console.log("Cloudinary deletion result:", result);
-		if (result.result !== "ok" && result.result !== "not_found") {
-			throw new Error(`Failed to delete resource: ${result.result}`);
-		}
-	} catch (error) {
-		console.error("Error deleting from Cloudinary:", error);
-		throw error;
-	}
-}
 
 export async function PUT(request, { params }) {
 	const { id } = params;
@@ -55,12 +38,37 @@ export async function PUT(request, { params }) {
 		if (eventvideo && eventvideo.size > 0) {
 			if (event.eventvideoUrl) {
 				console.log("Old video URL:", event.eventvideoUrl);
-				await deleteFromCloudinary(event.eventvideoUrl);
+				await deleteFromCloudinary(event.eventvideoUrl, "video");
 			}
 			eventData.eventvideoUrl = await uploadToCloudinary(eventvideo, "NEPOSnorway_event_images");
 		}
 
-		// Handle other uploads similarly...
+		const eventposter = formData.get("eventposter");
+		if (eventposter && eventposter.size > 0) {
+			if (event.eventposterUrl) {
+				console.log("Old poster URL:", event.eventposterUrl);
+				await deleteFromCloudinary(event.eventposterUrl, "image");
+			}
+			eventData.eventposterUrl = await uploadToCloudinary(eventposter, "NEPOSnorway_event_images");
+		}
+
+		const eventposter2 = formData.get("eventposter2");
+		if (eventposter2 && eventposter2.size > 0) {
+			if (event.eventposter2Url) {
+				console.log("Old poster2 URL:", event.eventposter2Url);
+				await deleteFromCloudinary(event.eventposter2Url, "image");
+			}
+			eventData.eventposter2Url = await uploadToCloudinary(eventposter2, "NEPOSnorway_event_images");
+		}
+
+		const eventposter3 = formData.get("eventposter3");
+		if (eventposter3 && eventposter3.size > 0) {
+			if (event.eventposter3Url) {
+				console.log("Old poster3 URL:", event.eventposter3Url);
+				await deleteFromCloudinary(event.eventposter3Url, "image");
+			}
+			eventData.eventposter3Url = await uploadToCloudinary(eventposter3, "NEPOSnorway_event_images");
+		}
 
 		const updatedEvent = await Event.findByIdAndUpdate(eventId, eventData, { new: true });
 
